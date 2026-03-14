@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galerie — Harmonie de Nuits-St-Georges</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="galerie.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a class="site-title" href="index.html">
+        <span class="label">Musique &amp; Partage</span>
+        <span class="name">L'Harmonie de Nuits-St-Georges</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MENU OVERLAY -->
+  <div class="nav-overlay" id="navOverlay">
+    <nav>
+      <a class="nav-link" href="index.html">Accueil</a>
+      <div class="nav-divider"></div>
+      <a class="nav-link" href="historique.html">Historique</a>
+      <a class="nav-link" href="agenda.html">Agenda</a>
+      <a class="nav-link" href="galerie.html">Galerie</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- BANDEAU PAGE -->
+  <div class="page-hero">
+    <p class="page-hero-tag">Souvenirs &amp; archives</p>
+    <h1>Notre<br><em>Galerie</em></h1>
+    <div class="page-hero-line"></div>
+  </div>
+
+  <!-- NAVIGATION INTERNE -->
+  <nav class="galerie-nav">
+    <a href="#photos" class="galerie-nav-link active">Photos</a>
+    <a href="#programmes" class="galerie-nav-link">Programmes</a>
+    <a href="#videos" class="galerie-nav-link">Vidéos</a>
+  </nav>
+
+
+  <!-- ===== SECTION PHOTOS ===== -->
+  <section class="section" id="photos">
+    <p class="section-tag">Moments capturés</p>
+    <h2>Photos</h2>
+    <div class="section-line"></div>
+
+    <!-- Filtres par événement (optionnel) -->
+    <div class="photo-filters">
+      <button class="filter-btn active" data-filter="all">Toutes</button>
+      <button class="filter-btn" data-filter="concert">Concerts</button>
+      <button class="filter-btn" data-filter="animation">Animations</button>
+      <button class="filter-btn" data-filter="coulisses">Coulisses</button>
+    </div>
+
+    <div class="photo-grid" id="photoGrid">
+
+      <!-- Remplacer src="..." par le chemin de vos vraies photos -->
+      <!-- Format recommandé : 800×600px minimum -->
+
+      <div class="photo-item" data-cat="concert">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🎼</span>
+          <span class="photo-placeholder-label">Concert — Photo 1</span>
+        </div>
+        <!-- <img src="photos/concert-1.jpg" alt="Concert 2024"> -->
+      </div>
+
+      <div class="photo-item photo-item--wide" data-cat="concert">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🎺</span>
+          <span class="photo-placeholder-label">Concert — Photo 2 (large)</span>
+        </div>
+        <!-- <img src="photos/concert-2.jpg" alt="Concert de Noël 2024"> -->
+      </div>
+
+      <div class="photo-item" data-cat="animation">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🥁</span>
+          <span class="photo-placeholder-label">Animation — Photo 3</span>
+        </div>
+        <!-- <img src="photos/animation-1.jpg" alt="Défilé du 14 Juillet"> -->
+      </div>
+
+      <div class="photo-item" data-cat="coulisses">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🎷</span>
+          <span class="photo-placeholder-label">Coulisses — Photo 4</span>
+        </div>
+        <!-- <img src="photos/coulisses-1.jpg" alt="Répétition"> -->
+      </div>
+
+      <div class="photo-item" data-cat="animation">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🎵</span>
+          <span class="photo-placeholder-label">Animation — Photo 5</span>
+        </div>
+        <!-- <img src="photos/animation-2.jpg" alt="Fête de la Musique"> -->
+      </div>
+
+      <div class="photo-item photo-item--tall" data-cat="coulisses">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🎻</span>
+          <span class="photo-placeholder-label">Coulisses — Photo 6 (haute)</span>
+        </div>
+        <!-- <img src="photos/coulisses-2.jpg" alt="Avant-scène"> -->
+      </div>
+
+      <div class="photo-item" data-cat="concert">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🎼</span>
+          <span class="photo-placeholder-label">Concert — Photo 7</span>
+        </div>
+        <!-- <img src="photos/concert-3.jpg" alt="Concert de Printemps"> -->
+      </div>
+
+      <div class="photo-item" data-cat="concert">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">🎺</span>
+          <span class="photo-placeholder-label">Concert — Photo 8</span>
+        </div>
+        <!-- <img src="photos/concert-4.jpg" alt="Concert avec Chagny"> -->
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+
+  <!-- ===== SECTION PROGRAMMES ===== -->
+  <section class="section" id="programmes">
+    <p class="section-tag">Archives musicales</p>
+    <h2>Programmes</h2>
+    <div class="section-line"></div>
+    <p class="section-body">Retrouvez ici les programmes de nos concerts passés, avec les œuvres interprétées et les notes de présentation.</p>
+
+    <div class="programmes-list">
+
+      <!-- Programme 1 -->
+      <article class="programme-item">
+        <div class="programme-img-wrap">
+          <div class="programme-img-placeholder">
+            <span>📄</span>
+            <span class="photo-placeholder-label">Couverture du programme</span>
+          </div>
+          <!-- <img src="programmes/programme-noel-2024.jpg" alt="Programme Concert de Noël 2024"> -->
+        </div>
+        <div class="programme-content">
+          <p class="programme-date">Décembre 2024</p>
+          <h3>Concert de Noël</h3>
+          <p class="programme-body">
+            Un programme festif réunissant les grands classiques de Noël, des arrangements
+            pour harmonie et quelques créations originales de notre chef de pupitre.
+            Vingt musiciens sur scène pour une soirée mémorable à l'église Saint-Pierre.
+          </p>
+          <div class="programme-oeuvres">
+            <p class="programme-oeuvres-label">Au programme</p>
+            <ul>
+              <li>Titre de l'œuvre — Compositeur</li>
+              <li>Titre de l'œuvre — Compositeur</li>
+              <li>Titre de l'œuvre — Compositeur</li>
+            </ul>
+          </div>
+          <!-- Décommenter si vous avez un PDF à télécharger -->
+          <!-- <a class="programme-dl" href="programmes/noel-2024.pdf" download>Télécharger le programme (PDF)</a> -->
+        </div>
+      </article>
+
+      <div class="programme-sep"></div>
+
+      <!-- Programme 2 -->
+      <article class="programme-item programme-item--reverse">
+        <div class="programme-img-wrap">
+          <div class="programme-img-placeholder">
+            <span>📄</span>
+            <span class="photo-placeholder-label">Couverture du programme</span>
+          </div>
+          <!-- <img src="programmes/programme-printemps-2024.jpg" alt="Programme Concert de Printemps 2024"> -->
+        </div>
+        <div class="programme-content">
+          <p class="programme-date">Mai 2024</p>
+          <h3>Concert de Printemps</h3>
+          <p class="programme-body">
+            Notre concert annuel de printemps, toujours très attendu, a réuni
+            plus de deux cents spectateurs. Un voyage musical à travers les époques,
+            du baroque à la musique de film contemporaine.
+          </p>
+          <div class="programme-oeuvres">
+            <p class="programme-oeuvres-label">Au programme</p>
+            <ul>
+              <li>Titre de l'œuvre — Compositeur</li>
+              <li>Titre de l'œuvre — Compositeur</li>
+              <li>Titre de l'œuvre — Compositeur</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <div class="programme-sep"></div>
+
+      <!-- Programme 3 -->
+      <article class="programme-item">
+        <div class="programme-img-wrap">
+          <div class="programme-img-placeholder">
+            <span>📄</span>
+            <span class="photo-placeholder-label">Couverture du programme</span>
+          </div>
+        </div>
+        <div class="programme-content">
+          <p class="programme-date">Juillet 2023</p>
+          <h3>Bal du 14 Juillet</h3>
+          <p class="programme-body">
+            Chaque année, nous animons le bal du 14 Juillet sur l'esplanade de la mairie.
+            Une soirée populaire et festive qui rassemble petits et grands autour
+            de la musique de fanfare et des grands airs du répertoire français.
+          </p>
+          <div class="programme-oeuvres">
+            <p class="programme-oeuvres-label">Au programme</p>
+            <ul>
+              <li>Titre de l'œuvre — Compositeur</li>
+              <li>Titre de l'œuvre — Compositeur</li>
+              <li>Titre de l'œuvre — Compositeur</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+
+  <!-- ===== SECTION VIDÉOS ===== -->
+  <section class="section" id="videos">
+    <p class="section-tag">En images et en son</p>
+    <h2>Vidéos</h2>
+    <div class="section-line"></div>
+
+    <div class="video-grid">
+
+      <!-- Vidéo YouTube — remplacer l'ID après "embed/" -->
+      <div class="video-item">
+        <div class="video-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Concert de Noël 2024"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">YouTube</p>
+          <p class="video-title">Concert de Noël 2024</p>
+          <p class="video-desc">Captation intégrale du concert de Noël à l'église Saint-Pierre.</p>
+        </div>
+      </div>
+
+      <!-- Vidéo YouTube 2 -->
+      <div class="video-item">
+        <div class="video-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Concert de Printemps 2024"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">YouTube</p>
+          <p class="video-title">Concert de Printemps 2024</p>
+          <p class="video-desc">Extraits du concert de printemps à la salle des fêtes.</p>
+        </div>
+      </div>
+
+      <!-- Vidéo locale .mp4 — remplacer src="..." par le chemin du fichier -->
+      <div class="video-item">
+        <div class="video-embed-wrap">
+          <video controls poster="">
+            <source src="videos/bal-juillet-2024.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">Vidéo locale</p>
+          <p class="video-title">Bal du 14 Juillet 2024</p>
+          <p class="video-desc">Ambiance et extraits du bal annuel sur l'esplanade de la mairie.</p>
+        </div>
+      </div>
+
+      <!-- Vidéo locale 2 -->
+      <div class="video-item">
+        <div class="video-embed-wrap">
+          <video controls poster="">
+            <source src="videos/repet-2024.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">Vidéo locale</p>
+          <p class="video-title">Répétition générale — Décembre 2024</p>
+          <p class="video-desc">Dans les coulisses, avant le grand concert de Noël.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer><p>&copy; 2025 &mdash; L'Harmonie de Nuits-St-Georges &mdash; Tous droits réservés</p></footer>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+
+      /* ---- Filtres photos ---- */
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var photoItems = document.querySelectorAll('.photo-item');
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          var filter = btn.getAttribute('data-filter');
+          photoItems.forEach(function (item) {
+            if (filter === 'all' || item.getAttribute('data-cat') === filter) {
+              item.style.display = '';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      /* ---- Navigation interne : lien actif au scroll ---- */
+      var sections = document.querySelectorAll('section[id]');
+      var navLinks = document.querySelectorAll('.galerie-nav-link');
+
+      window.addEventListener('scroll', function () {
+        var scrollY = window.scrollY + 140;
+        sections.forEach(function (section) {
+          if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
+            navLinks.forEach(function (l) { l.classList.remove('active'); });
+            var active = document.querySelector('.galerie-nav-link[href="#' + section.id + '"]');
+            if (active) active.classList.add('active');
+          }
+        });
+      });
+
+    });
+  </script>
+
+</body>
+</html>
