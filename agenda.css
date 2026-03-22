@@ -161,3 +161,140 @@
     flex: 0 0 100%;
   }
 }
+
+/* ===== BOUTON MAP SUR LES CARTES ===== */
+.map-btn {
+  margin-top: 1.2rem;
+  font-family: var(--font-caps);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid rgba(2, 0, 71, 0.2);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.25s, border-color 0.25s, background 0.25s;
+  width: 100%;
+}
+.map-btn:hover {
+  opacity: 1;
+  border-color: var(--navy);
+  background: rgba(2, 0, 71, 0.04);
+}
+
+
+/* ===== BLOC CARTE ===== */
+.map-container {
+  display: none;
+  margin-top: 2.5rem;
+  border: 1px solid rgba(2, 0, 71, 0.12);
+  overflow: hidden;
+  background: var(--white);
+}
+.map-container.map-visible {
+  display: block;
+  animation: fadeUp 0.35s ease both;
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(2, 0, 71, 0.08);
+  background: var(--white);
+}
+
+.map-lieu-label {
+  font-family: var(--font-caps);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.75;
+}
+
+.map-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--navy);
+  opacity: 0.4;
+  transition: opacity 0.2s;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+}
+.map-close:hover { opacity: 1; }
+
+/* La div #map doit avoir une hauteur fixe pour Leaflet */
+#map {
+  height: 380px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  #map { height: 260px; }
+}
+
+
+/* ===== ITINÉRAIRE ===== */
+.map-itinerary {
+  display: flex;
+  gap: 0.8rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(2, 0, 71, 0.08);
+  background: var(--cream);
+  flex-wrap: wrap;
+}
+
+.map-input {
+  flex: 1;
+  min-width: 200px;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid rgba(2, 0, 71, 0.18);
+  padding: 0.6rem 1rem;
+  outline: none;
+  transition: border-color 0.25s;
+}
+.map-input:focus { border-color: var(--navy); }
+
+.map-itinerary-btn {
+  font-family: var(--font-caps);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--navy);
+  border: 1.5px solid var(--navy);
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+  white-space: nowrap;
+}
+.map-itinerary-btn:hover {
+  background: transparent;
+  color: var(--navy);
+}
+
+/* Hauteurs des divs Leaflet */
+#mapConcertsLeaflet,
+#mapAnimsLeaflet {
+  height: 380px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  #mapConcertsLeaflet,
+  #mapAnimsLeaflet { height: 260px; }
+  .map-itinerary { flex-direction: column; }
+  .map-input { min-width: 0; }
+}
