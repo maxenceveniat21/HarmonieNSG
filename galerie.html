@@ -66,9 +66,6 @@
 
     <div class="photo-grid" id="photoGrid">
 
-      <!-- Remplacer src="..." par le chemin de vos vraies photos -->
-      <!-- Format recommandé : 800×600px minimum -->
-
       <div class="photo-item" data-cat="concert">
         <img src="images/PhotoConcert.jpg" alt="">
       </div>
@@ -105,29 +102,38 @@
         <img src="images/PhotoGroupeConcertVillageV2.jpg" alt="">
       </div>
 
-      <div class="photo-item" data-cat="animation">
-        <div class="photo-placeholder">
-          <span class="photo-placeholder-icon">🥁</span>
-          <span class="photo-placeholder-label">Animation — Photo 3</span>
-        </div>
-        <!-- <img src="photos/animation-1.jpg" alt="Défilé du 14 Juillet"> -->
-      </div>
 
       <div class="photo-item" data-cat="coulisses">
         <img src="images/PhotoTrombone.jpg" alt="">
       </div>
 
-      <div class="photo-item" data-cat="animation">
-        <div class="photo-placeholder">
-          <span class="photo-placeholder-icon">🎵</span>
-          <span class="photo-placeholder-label">Animation — Photo 5</span>
-        </div>
-        <!-- <img src="photos/animation-2.jpg" alt="Fête de la Musique"> -->
+      <div class="photo-item photo-item--wide" data-cat="coulisses">
+        <img src="images/PhotoGateau210Ans.jpg" alt="">
       </div>
 
+      <div class="photo-item photo-item--wide" data-cat="animation">
+        <img src="images/PhotoGroupeDefiles2.jpg" alt="">
+      </div>
 
+      <div class="photo-item photo-item--mid" data-cat="animation">
+        <img src="images/PhotoGroupeRepasAnciens.jpg" alt="">
+      </div>
 
+      <div class="photo-item" data-cat="animation">
+        <img src="images/PhotoGroupeDefiles4.jpg" alt="">
+      </div>
 
+      <div class="photo-item photo-item--wide" data-cat="animation">
+        <img src="images/PhotoGroupeCourse.jpg" alt="">
+      </div>
+
+      <div class="photo-item photo-item--wide" data-cat="animation">
+        <img src="images/PhotoGroupeDefiles3.jpg" alt="">
+      </div>
+      
+      <div class="photo-item photo-item--mid" data-cat="animation">
+        <img src="images/PhotoTromboneCourse.jpg" alt="">
+      </div>
 
     </div>
   </section>
@@ -300,47 +306,26 @@
 
   <footer><p>&copy; 2025 &mdash; L'Harmonie de Nuits-St-Georges &mdash; Tous droits réservés</p></footer>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">✕</button>
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Précédent">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lightbox-img-wrap">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Suivant">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <p class="lightbox-counter" id="lightboxCounter"></p>
+  </div>
+
   <script src="script.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', function () {
-
-      /* ---- Filtres photos ---- */
-      var filterBtns = document.querySelectorAll('.filter-btn');
-      var photoItems = document.querySelectorAll('.photo-item');
-
-      filterBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          filterBtns.forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-
-          var filter = btn.getAttribute('data-filter');
-          photoItems.forEach(function (item) {
-            if (filter === 'all' || item.getAttribute('data-cat') === filter) {
-              item.style.display = '';
-            } else {
-              item.style.display = 'none';
-            }
-          });
-        });
-      });
-
-      /* ---- Navigation interne : lien actif au scroll ---- */
-      var sections = document.querySelectorAll('section[id]');
-      var navLinks = document.querySelectorAll('.galerie-nav-link');
-
-      window.addEventListener('scroll', function () {
-        var scrollY = window.scrollY + 140;
-        sections.forEach(function (section) {
-          if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
-            navLinks.forEach(function (l) { l.classList.remove('active'); });
-            var active = document.querySelector('.galerie-nav-link[href="#' + section.id + '"]');
-            if (active) active.classList.add('active');
-          }
-        });
-      });
-
-    });
-  </script>
 
 </body>
 </html>

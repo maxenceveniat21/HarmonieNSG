@@ -187,7 +187,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   /* =========================================
-     FILTRES PHOTOS
+     FILTRES PHOTOS + LIGHTBOX
      Uniquement sur la page galerie
      ========================================= */
 
@@ -210,6 +210,87 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         });
       });
+    });
+  }
+
+  // Lightbox
+  var lightbox        = document.getElementById('lightbox');
+
+  if (lightbox) {
+    var lightboxImg     = document.getElementById('lightboxImg');
+    var lightboxClose   = document.getElementById('lightboxClose');
+    var lightboxPrev    = document.getElementById('lightboxPrev');
+    var lightboxNext    = document.getElementById('lightboxNext');
+    var lightboxCounter = document.getElementById('lightboxCounter');
+
+    var currentIndex = 0;
+    var visibleImages = [];
+
+    // Collecte les images visibles dans la grille
+    function getVisibleImages() {
+      visibleImages = [];
+      document.querySelectorAll('.photo-item').forEach(function (item) {
+        if (item.style.display !== 'none') {
+          var img = item.querySelector('img');
+          if (img) visibleImages.push(img);
+        }
+      });
+    }
+
+    function openLightbox(index) {
+      getVisibleImages();
+      currentIndex = index;
+      lightboxImg.src = visibleImages[currentIndex].src;
+      lightboxImg.alt = visibleImages[currentIndex].alt;
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + visibleImages.length;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function goTo(index) {
+      currentIndex = (index + visibleImages.length) % visibleImages.length;
+      lightboxImg.style.opacity = '0';
+      setTimeout(function () {
+        lightboxImg.src = visibleImages[currentIndex].src;
+        lightboxImg.alt = visibleImages[currentIndex].alt;
+        lightboxCounter.textContent = (currentIndex + 1) + ' / ' + visibleImages.length;
+        lightboxImg.style.opacity = '1';
+      }, 150);
+    }
+
+    // Clic sur une photo
+    document.querySelectorAll('.photo-item').forEach(function (item, index) {
+      item.addEventListener('click', function () {
+        if (item.querySelector('img')) {
+          getVisibleImages();
+          // Trouve l'index dans les images visibles
+          var img = item.querySelector('img');
+          var idx = visibleImages.indexOf(img);
+          if (idx !== -1) openLightbox(idx);
+        }
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', function () { goTo(currentIndex - 1); });
+    lightboxNext.addEventListener('click', function () { goTo(currentIndex + 1); });
+
+    // Fermer en cliquant sur le fond
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Navigation clavier
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
+      if (e.key === 'ArrowLeft')  goTo(currentIndex - 1);
+      if (e.key === 'Escape')     closeLightbox();
     });
   }
 
