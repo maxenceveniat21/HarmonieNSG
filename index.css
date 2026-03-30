@@ -32,19 +32,43 @@
 /* Images décoratives notes de musique */
 .hero-deco {
   position: absolute;
-  width: 300px;        /* ← ajuste la taille ici */
-  opacity: 1;       /* ← ajuste la transparence ici (0 = invisible, 1 = plein) */
+  opacity: 1;
   pointer-events: none;
   user-select: none;
 }
 
-.hero-deco-top-left  { left: 2rem; transform: rotate(-40deg); width: 600px; top: -2%;}
-.hero-deco-top-right { right: 2rem; transform: rotate(15deg); }
-.hero-deco-bottom-right {}
+.hero-deco-top-left {
+  left: -2%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(200px, 28vw, 600px);  /* ← s'adapte à la largeur d'écran */
+}
 
-/* Masquer les décos sur petits écrans */
-@media (max-width: 860px) {
-  .hero-deco { display: none; }
+.hero-deco-top-right {
+  right: 0;
+  top: -1%;
+  transform: rotate(15deg);
+  width: clamp(100px, 14vw, 250px);
+}
+
+.hero-deco-bottom-right {
+  right: -2%;
+  top: 50%;
+  transform: rotate(-40deg);
+  width: clamp(180px, 30vw, 600px);
+}
+
+/* Tablette : on réduit encore */
+@media (max-width: 1024px) {
+  .hero-deco-top-left    { width: clamp(80px, 22vw, 180px); }
+  .hero-deco-bottom-right { width: clamp(120px, 22vw, 350px); }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .hero-deco-bottom-right { display: none; }
+  .hero-deco-top-right { right: 40%; transform: rotate(0deg); top: 2%;}
+  .hero-deco-top-left {left: 35%; transform: rotate(0deg); top: 80%;}
 }
 
 /* Contenu centré du hero */
