@@ -29,6 +29,8 @@
   pointer-events: none;
 }
 
+
+
 /* Images décoratives notes de musique */
 .hero-deco {
   position: absolute;
@@ -45,14 +47,13 @@
 }
 
 .hero-deco-top-right {
-  right: 0;
+  right: 7%;
   top: -1%;
-  transform: rotate(15deg);
   width: clamp(100px, 14vw, 250px);
 }
 
 .hero-deco-bottom-right {
-  right: -2%;
+  right: 0%;
   top: 50%;
   transform: rotate(-40deg);
   width: clamp(180px, 30vw, 600px);
@@ -140,6 +141,14 @@
 
 
 /* ===== STATS ===== */
+
+.logo-right-text{
+  position: absolute;
+  width: 300px;
+  right: 6%;
+  top: 105%;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

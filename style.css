@@ -99,7 +99,12 @@ header {
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+}
+
+.logo-header {
+  width: 65px;
+  margin-left: 25%;
+  margin-right: 45%;
 }
 
 .site-title {
