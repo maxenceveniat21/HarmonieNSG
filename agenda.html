@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agenda — Harmonie de la Ville</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
@@ -10,33 +10,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <div class="header-left">
-        <img class="logo-header" src="cle/Logo Harmonie Municipale NSG 2.png" alt="">
-        <a class="site-title" href="index.html">
-          <span class="label">Musique &amp; Partage</span>
-          <span class="name">L'Harmonie de Nuits-St-Georges</span>
-        </a>
-      </div>
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <div class="nav-overlay" id="navOverlay">
-    <nav>
-      <a class="nav-link" href="index.html">Accueil</a>
-      <div class="nav-divider"></div>
-      <a class="nav-link" href="historique.html">Historique</a>
-      <a class="nav-link" href="agenda.html">Agenda</a>
-      <a class="nav-link" href="galerie.html">Galerie</a>
-      <a class="nav-link" href="contact.html">Contact</a>
-    </nav>
-  </div>
 
   <div class="page-hero">
     <p class="page-hero-tag">Nos rendez-vous</p>
@@ -51,18 +24,14 @@
 
     <div class="carousel-wrapper">
       <button class="carousel-arrow carousel-arrow--prev" id="concertsPrev" aria-label="Précédent">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-
       <div class="carousel-track-wrapper">
         <div class="carousel-track" id="concertsTrack">
 
           <div class="event-card" data-lat="46.9116" data-lng="4.7583" data-lieu="Chagny — Salle des fêtes" data-map="mapConcerts">
             <p class="event-type">Concert</p>
-            <p class="event-date">25</p>
-            <p class="event-month">Avril 2026</p>
+            <p class="event-date">25</p><p class="event-month">Avril 2026</p>
             <div class="event-sep"></div>
             <p class="event-title">Concert avec l'harmonie de Chagny</p>
             <p class="event-location">Lieu ????????<br>20h30 — Entrée libre</p>
@@ -71,8 +40,7 @@
 
           <div class="event-card" data-lat="47.1133" data-lng="4.9561" data-lieu="Nuits-St-Georges — Salle des fêtes" data-map="mapConcerts">
             <p class="event-type">Concert</p>
-            <p class="event-date">30</p>
-            <p class="event-month">Mai 2026</p>
+            <p class="event-date">30</p><p class="event-month">Mai 2026</p>
             <div class="event-sep"></div>
             <p class="event-title">Concert de Printemps</p>
             <p class="event-location">Salle des fêtes de Nuits-St-Georges<br>20h30 - Entrée libre</p>
@@ -81,8 +49,7 @@
 
           <div class="event-card" data-lat="47.1133" data-lng="4.9561" data-lieu="Lieu à préciser" data-map="mapConcerts">
             <p class="event-type">Concert</p>
-            <p class="event-date">5</p>
-            <p class="event-month">Juin 2026</p>
+            <p class="event-date">5</p><p class="event-month">Juin 2026</p>
             <div class="event-sep"></div>
             <p class="event-title">Concert de ????</p>
             <p class="event-location">Lieu ????<br>20h30 - Entrée libre</p>
@@ -91,8 +58,7 @@
 
           <div class="event-card" data-lat="47.1133" data-lng="4.9561" data-lieu="Lieu à préciser" data-map="mapConcerts">
             <p class="event-type">Concert</p>
-            <p class="event-date">12</p>
-            <p class="event-month">Juin 2026</p>
+            <p class="event-date">12</p><p class="event-month">Juin 2026</p>
             <div class="event-sep"></div>
             <p class="event-title">Concert de ????</p>
             <p class="event-location">Lieu ????<br>20h30 - Entrée libre</p>
@@ -101,8 +67,7 @@
 
           <div class="event-card" data-lat="47.1133" data-lng="4.9561" data-lieu="Lieu à préciser" data-map="mapConcerts">
             <p class="event-type">Concert</p>
-            <p class="event-date">19</p>
-            <p class="event-month">Juin 2026</p>
+            <p class="event-date">19</p><p class="event-month">Juin 2026</p>
             <div class="event-sep"></div>
             <p class="event-title">Concert de ????</p>
             <p class="event-location">Lieu ????<br>20h30 - Entrée libre</p>
@@ -111,8 +76,7 @@
 
           <div class="event-card" data-lat="47.1133" data-lng="4.9561" data-lieu="Nuits-St-Georges — Salle des fêtes" data-map="mapConcerts">
             <p class="event-type">Concert</p>
-            <p class="event-date">12</p>
-            <p class="event-month">Décembre 2026</p>
+            <p class="event-date">12</p><p class="event-month">Décembre 2026</p>
             <div class="event-sep"></div>
             <p class="event-title">Concert de Noël</p>
             <p class="event-location">Salle des fêtes de Nuits-St-Georges<br>20h30 — Entrée libre</p>
@@ -121,22 +85,18 @@
 
         </div>
       </div>
-
       <button class="carousel-arrow carousel-arrow--next" id="concertsNext" aria-label="Suivant">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
 
-    <!-- CARTE CONCERTS -->
     <div class="map-container" id="mapConcerts">
       <div class="map-header">
         <span class="map-lieu-label" id="mapLieuConcerts">Sélectionnez un concert</span>
         <button class="map-close" data-target="mapConcerts" aria-label="Fermer">✕</button>
       </div>
       <div class="map-itinerary">
-        <input class="map-input" id="inputConcerts" type="text" placeholder="Votre adresse de départ…" />
+        <input class="map-input" id="inputConcerts" type="text" placeholder="Votre adresse de départ…"/>
         <button class="map-itinerary-btn" id="btnItineraryConcerts">🗺 Calculer l'itinéraire</button>
       </div>
       <div id="mapConcertsLeaflet"></div>
@@ -149,18 +109,14 @@
 
       <div class="carousel-wrapper">
         <button class="carousel-arrow carousel-arrow--prev" id="animsPrev" aria-label="Précédent">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-
         <div class="carousel-track-wrapper">
           <div class="carousel-track" id="animsTrack">
 
             <div class="event-card" data-lat="47.1133" data-lng="4.9561" data-lieu="Nuits-St-Georges — Centre-ville" data-map="mapAnims">
               <p class="event-type">Animation</p>
-              <p class="event-date">01</p>
-              <p class="event-month">Mai 2025</p>
+              <p class="event-date">01</p><p class="event-month">Mai 2025</p>
               <div class="event-sep"></div>
               <p class="event-title">Défilé du 1er Mai</p>
               <p class="event-location">Centre-ville<br>Départ à 10h00</p>
@@ -169,8 +125,7 @@
 
             <div class="event-card" data-lat="47.1140" data-lng="4.9558" data-lieu="Nuits-St-Georges — Place du marché" data-map="mapAnims">
               <p class="event-type">Animation</p>
-              <p class="event-date">21</p>
-              <p class="event-month">Juin 2025</p>
+              <p class="event-date">21</p><p class="event-month">Juin 2025</p>
               <div class="event-sep"></div>
               <p class="event-title">Fête de la Musique</p>
               <p class="event-location">Place du marché<br>18h00 — Gratuit</p>
@@ -179,8 +134,7 @@
 
             <div class="event-card" data-lat="47.1128" data-lng="4.9553" data-lieu="Nuits-St-Georges — Esplanade de la mairie" data-map="mapAnims">
               <p class="event-type">Animation</p>
-              <p class="event-date">13</p>
-              <p class="event-month">Juillet 2025</p>
+              <p class="event-date">13</p><p class="event-month">Juillet 2025</p>
               <div class="event-sep"></div>
               <p class="event-title">Bal du 14 Juillet</p>
               <p class="event-location">Esplanade de la mairie<br>À partir de 21h00</p>
@@ -189,8 +143,7 @@
 
             <div class="event-card" data-lat="47.1128" data-lng="4.9553" data-lieu="Nuits-St-Georges — Esplanade de la mairie" data-map="mapAnims">
               <p class="event-type">Animation</p>
-              <p class="event-date">13</p>
-              <p class="event-month">Juillet 2025</p>
+              <p class="event-date">13</p><p class="event-month">Juillet 2025</p>
               <div class="event-sep"></div>
               <p class="event-title">Bal du 14 Juillet</p>
               <p class="event-location">Esplanade de la mairie<br>À partir de 21h00</p>
@@ -199,34 +152,26 @@
 
           </div>
         </div>
-
         <button class="carousel-arrow carousel-arrow--next" id="animsNext" aria-label="Suivant">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
 
-      <!-- CARTE ANIMATIONS -->
       <div class="map-container" id="mapAnims">
         <div class="map-header">
           <span class="map-lieu-label" id="mapLieuAnims">Sélectionnez une animation</span>
           <button class="map-close" data-target="mapAnims" aria-label="Fermer">✕</button>
         </div>
         <div class="map-itinerary">
-          <input class="map-input" id="inputAnims" type="text" placeholder="Votre adresse de départ…" />
+          <input class="map-input" id="inputAnims" type="text" placeholder="Votre adresse de départ…"/>
           <button class="map-itinerary-btn" id="btnItineraryAnims">🗺 Calculer l'itinéraire</button>
         </div>
         <div id="mapAnimsLeaflet"></div>
       </div>
-
     </div>
   </section>
 
-  <footer><p>&copy; 2025 &mdash; L'Harmonie de la Ville &mdash; Tous droits réservés</p></footer>
-
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>

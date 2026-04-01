@@ -1,8 +1,6 @@
 /* =============================================
    HISTORIQUE — Styles spécifiques
-   (La typographie de base vient de style.css)
    ============================================= */
-
 
 /* ===== TIMELINE ===== */
 .timeline {
@@ -16,39 +14,30 @@
 .timeline::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  left: 0; top: 0; bottom: 0;
   width: 1px;
   background: rgba(2, 0, 71, 0.15);
 }
 
-.timeline-item {
-  padding: 0 0 3.5rem 3rem;
-  position: relative;
-}
+.timeline-item { padding: 0 0 3.5rem 3rem; position: relative; }
 .timeline-item:last-child { padding-bottom: 0; }
 
-/* Point sur le filet */
 .timeline-dot {
   position: absolute;
-  left: -5px;
-  top: 6px;
-  width: 11px;
-  height: 11px;
+  left: -5px; top: 6px;
+  width: 11px; height: 11px;
   border-radius: 50%;
   background: var(--navy);
   border: 2px solid var(--cream);
   box-shadow: 0 0 0 1px rgba(2, 0, 71, 0.2);
 }
 
-/* Année — étiquette en capitales */
+/* Années — classe de base + surcharges pour les variantes */
 .timeline-year {
   position: absolute;
-  left: -9%;
-  top: -6px;
+  left: -9%; top: -6px;
   font-family: var(--font-caps);
-  font-size: var(--text-s);
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -57,52 +46,22 @@
   margin-bottom: 0.5rem;
   display: block;
 }
+.timeline-year-last { left: -23%; }
+.timeline-year-date { left: -15%; }
 
-.timeline-year-last {
-  left: -23%;
-  top: -6px;
-}
+.timeline-title { font-size: 1.8rem; }
 
-.timeline-year-date {
-  left: -15%;
-  top: -6px;
-}
+.timeline-text { opacity: 0.8; text-align: justify; }
 
-/* Titre de l'événement — hérite de h3 (style.css) */
-.timeline-title {
-  font-size: 1.8rem;
-}
+/* Photos dans la timeline */
+.photo-row { display: flex; gap: 1.5rem; align-items: flex-start; }
+.photo-row img { margin-top: 1rem; margin-left: 0.5rem; }
 
-/* Texte descriptif — hérite de p (style.css), légèrement atténué */
-.timeline-text {
-  opacity: 0.8;
-  text-align: justify;
-}
-
-.photo-row {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start; /* aligne en haut */
-}
-.photo-row img {
-  margin-top: 1rem;
-  margin-left: 0.5rem;
-}
-
-.timeline-photo {
-  margin-top: 1rem;
-  margin-left: 0.5rem;
-  width: 500px;
-}
-.timeline-photo-long {
-  height: 450px;
-}
+.timeline-photo        { margin-top: 1rem; margin-left: 0.5rem; width: 500px; }
+.timeline-photo-long   { height: 450px; }
 .timeline-photo-small-side {
   position: absolute;
-  top: 15%;
-  right: -40%;
+  top: 15%; right: -40%;
   height: 220px;
 }
-.timeline-photo-small-side-v2 {
-  height: 450px;
-}
+.timeline-photo-small-side-v2 { height: 450px; }

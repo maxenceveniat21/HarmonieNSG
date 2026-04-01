@@ -1,9 +1,7 @@
 /* =============================================
    AGENDA — Styles spécifiques
-   (La typographie de base vient de style.css)
    ============================================= */
- 
- 
+
 /* ===== GRILLE ===== */
 .agenda-grid {
   display: grid;
@@ -11,10 +9,10 @@
   gap: 1.5rem;
   margin-top: 3rem;
 }
- 
+
 .agenda-subsection { margin-top: 5rem; }
- 
- 
+
+
 /* ===== CARTE ÉVÉNEMENT ===== */
 .event-card {
   border: 1px solid rgba(2, 0, 71, 0.12);
@@ -26,8 +24,7 @@
   box-shadow: 0 8px 30px rgba(2, 0, 71, 0.08);
   transform: translateY(-2px);
 }
- 
-/* Type (Concert / Animation) — étiquette en capitales */
+
 .event-type {
   font-family: var(--font-caps);
   font-size: var(--text-xs);
@@ -44,146 +41,79 @@
 .event-type::before {
   content: '';
   display: inline-block;
-  width: 15px;
-  height: 1px;
+  width: 15px; height: 1px;
   background: currentColor;
   flex-shrink: 0;
 }
- 
-/* Numéro du jour — grand chiffre serif */
+
 .event-date {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1;
+  font-size: 2.2rem; font-weight: 700;
+  color: var(--navy); line-height: 1;
   display: block;
 }
- 
-/* Mois — étiquette en capitales */
+
 .event-month {
   font-family: var(--font-caps);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.7;
-  margin-top: 0.2rem;
-  margin-bottom: 1.2rem;
+  font-size: var(--text-xs); font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--navy); opacity: 0.7;
+  margin-top: 0.2rem; margin-bottom: 1.2rem;
   display: block;
 }
- 
-/* Titre de l'événement — hérite de h3 (style.css) */
-.event-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.6rem;
-}
- 
-/* Lieu — hérite de p (style.css), légèrement atténué */
-.event-location {
-  font-size: var(--text-sm);
-  opacity: 0.65;
-  line-height: 1.6;
-}
- 
-/* Filet séparateur dans la carte */
-.event-sep {
-  width: 100%;
-  height: 1px;
-  background: rgba(2, 0, 71, 0.08);
-  margin: 1.2rem 0;
-}
- 
- 
+
+.event-title { font-size: 1.25rem; margin-bottom: 0.6rem; }
+
+.event-location { font-size: var(--text-sm); opacity: 0.65; line-height: 1.6; }
+
+.event-sep { width: 100%; height: 1px; background: rgba(2, 0, 71, 0.08); margin: 1.2rem 0; }
+
+
 /* ===== CARROUSEL ===== */
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 3rem;
-}
- 
-/* Zone de défilement — masque ce qui dépasse */
-.carousel-track-wrapper {
-  flex: 1;
-  overflow: hidden;
-}
- 
-/* Piste — flex horizontal, transition fluide */
-.carousel-track {
-  display: flex;
-  gap: 1.5rem;
-  transition: transform 0.4s ease;
-}
- 
-/* Chaque carte occupe exactement 1/3 de la piste visible (3 colonnes par défaut) */
+.carousel-wrapper { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; }
+
+.carousel-track-wrapper { flex: 1; overflow: hidden; }
+
+.carousel-track { display: flex; gap: 1.5rem; transition: transform 0.4s ease; }
+
 .carousel-track .event-card {
   flex: 0 0 calc((100% - 3rem) / 3);
   min-width: 0;
 }
- 
-/* Flèches */
+
 .carousel-arrow {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   border: 1.5px solid rgba(2, 0, 71, 0.2);
   background: transparent;
   color: var(--navy);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   transition: border-color 0.25s, background 0.25s, opacity 0.25s;
   opacity: 0.5;
 }
-.carousel-arrow:hover {
-  border-color: var(--navy);
-  background: rgba(2, 0, 71, 0.05);
-  opacity: 1;
-}
-.carousel-arrow--disabled {
-  opacity: 0.15;
-  cursor: default;
-  pointer-events: none;
-}
- 
-/* Responsive */
-@media (max-width: 960px) {
-  .carousel-track .event-card {
-    flex: 0 0 calc((100% - 1.5rem) / 2);
-  }
-}
-@media (max-width: 600px) {
-  .carousel-track .event-card {
-    flex: 0 0 100%;
-  }
-}
+.carousel-arrow:hover { border-color: var(--navy); background: rgba(2, 0, 71, 0.05); opacity: 1; }
+.carousel-arrow--disabled { opacity: 0.15; cursor: default; pointer-events: none; }
 
-/* ===== BOUTON MAP SUR LES CARTES ===== */
+@media (max-width: 960px) { .carousel-track .event-card { flex: 0 0 calc((100% - 1.5rem) / 2); } }
+@media (max-width: 600px) { .carousel-track .event-card { flex: 0 0 100%; } }
+
+
+/* ===== BOUTON MAP ===== */
 .map-btn {
   margin-top: 1.2rem;
   font-family: var(--font-caps);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--navy);
-  background: transparent;
+  font-size: var(--text-xs); font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--navy); background: transparent;
   border: 1px solid rgba(2, 0, 71, 0.2);
   padding: 0.5rem 1rem;
-  cursor: pointer;
-  opacity: 0.6;
+  cursor: pointer; opacity: 0.6;
   transition: opacity 0.25s, border-color 0.25s, background 0.25s;
   width: 100%;
 }
-.map-btn:hover {
-  opacity: 1;
-  border-color: var(--navy);
-  background: rgba(2, 0, 71, 0.04);
-}
+.map-btn:hover { opacity: 1; border-color: var(--navy); background: rgba(2, 0, 71, 0.04); }
 
 
 /* ===== BLOC CARTE ===== */
@@ -194,15 +124,10 @@
   overflow: hidden;
   background: var(--white);
 }
-.map-container.map-visible {
-  display: block;
-  animation: fadeUp 0.35s ease both;
-}
+.map-container.map-visible { display: block; animation: fadeUp 0.35s ease both; }
 
 .map-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid rgba(2, 0, 71, 0.08);
   background: var(--white);
@@ -210,42 +135,23 @@
 
 .map-lieu-label {
   font-family: var(--font-caps);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.75;
+  font-size: var(--text-xs); font-weight: 400;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--navy); opacity: 0.75;
 }
 
 .map-close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  color: var(--navy);
-  opacity: 0.4;
+  background: none; border: none;
+  cursor: pointer; font-size: 1rem;
+  color: var(--navy); opacity: 0.4;
   transition: opacity 0.2s;
-  line-height: 1;
-  padding: 0.2rem 0.4rem;
+  line-height: 1; padding: 0.2rem 0.4rem;
 }
 .map-close:hover { opacity: 1; }
 
-/* La div #map doit avoir une hauteur fixe pour Leaflet */
-#map {
-  height: 380px;
-  width: 100%;
-}
-
-@media (max-width: 640px) {
-  #map { height: 260px; }
-}
-
-
 /* ===== ITINÉRAIRE ===== */
 .map-itinerary {
-  display: flex;
-  gap: 0.8rem;
+  display: flex; gap: 0.8rem;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid rgba(2, 0, 71, 0.08);
   background: var(--cream);
@@ -253,48 +159,33 @@
 }
 
 .map-input {
-  flex: 1;
-  min-width: 200px;
+  flex: 1; min-width: 200px;
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: var(--navy);
-  background: var(--white);
+  color: var(--navy); background: var(--white);
   border: 1px solid rgba(2, 0, 71, 0.18);
   padding: 0.6rem 1rem;
-  outline: none;
-  transition: border-color 0.25s;
+  outline: none; transition: border-color 0.25s;
 }
 .map-input:focus { border-color: var(--navy); }
 
 .map-itinerary-btn {
   font-family: var(--font-caps);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--navy);
+  font-size: var(--text-xs); font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--white); background: var(--navy);
   border: 1.5px solid var(--navy);
   padding: 0.6rem 1.4rem;
-  cursor: pointer;
+  cursor: pointer; white-space: nowrap;
   transition: background 0.25s, color 0.25s;
-  white-space: nowrap;
 }
-.map-itinerary-btn:hover {
-  background: transparent;
-  color: var(--navy);
-}
+.map-itinerary-btn:hover { background: transparent; color: var(--navy); }
 
-/* Hauteurs des divs Leaflet */
-#mapConcertsLeaflet,
-#mapAnimsLeaflet {
-  height: 380px;
-  width: 100%;
-}
+/* Hauteurs Leaflet */
+#mapConcertsLeaflet, #mapAnimsLeaflet { height: 380px; width: 100%; }
 
 @media (max-width: 640px) {
-  #mapConcertsLeaflet,
-  #mapAnimsLeaflet { height: 260px; }
+  #mapConcertsLeaflet, #mapAnimsLeaflet { height: 260px; }
   .map-itinerary { flex-direction: column; }
   .map-input { min-width: 0; }
 }

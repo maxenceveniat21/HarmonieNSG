@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Galerie — Harmonie de Nuits-St-Georges</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
@@ -10,141 +10,53 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <div class="header-left">
-        <img class="logo-header" src="cle/Logo Harmonie Municipale NSG 2.png" alt="">
-        <a class="site-title" href="index.html">
-          <span class="label">Musique &amp; Partage</span>
-          <span class="name">L'Harmonie de Nuits-St-Georges</span>
-        </a>
-      </div>
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- MENU OVERLAY -->
-  <div class="nav-overlay" id="navOverlay">
-    <nav>
-      <a class="nav-link" href="index.html">Accueil</a>
-      <div class="nav-divider"></div>
-      <a class="nav-link" href="historique.html">Historique</a>
-      <a class="nav-link" href="agenda.html">Agenda</a>
-      <a class="nav-link" href="galerie.html">Galerie</a>
-      <a class="nav-link" href="contact.html">Contact</a>
-    </nav>
-  </div>
-
-  <!-- BANDEAU PAGE -->
   <div class="page-hero">
     <p class="page-hero-tag">Souvenirs &amp; archives</p>
     <h1>Notre<br><em>Galerie</em></h1>
     <div class="page-hero-line"></div>
   </div>
 
-  <!-- NAVIGATION INTERNE -->
   <nav class="galerie-nav">
     <a href="#photos" class="galerie-nav-link active">Photos</a>
     <a href="#programmes" class="galerie-nav-link">Programmes</a>
     <a href="#videos" class="galerie-nav-link">Vidéos</a>
   </nav>
 
-
-  <!-- ===== SECTION PHOTOS ===== -->
+  <!-- PHOTOS -->
   <section class="section" id="photos">
     <p class="section-tag">Moments capturés</p>
     <h2>Photos</h2>
     <div class="section-line"></div>
-
-    <!-- Filtres par événement (optionnel) -->
     <div class="photo-filters">
       <button class="filter-btn active" data-filter="all">Toutes</button>
       <button class="filter-btn" data-filter="concert">Concerts</button>
       <button class="filter-btn" data-filter="animation">Animations</button>
       <button class="filter-btn" data-filter="coulisses">Coulisses</button>
     </div>
-
     <div class="photo-grid" id="photoGrid">
-
-      <div class="photo-item" data-cat="concert">
-        <img src="images/PhotoConcert.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--wide" data-cat="concert">
-        <img src="images/PhotoConcert2.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--wide" data-cat="concert">
-        <img src="images/PhotoConcertGardeImperiale2.jpg" alt="">
-      </div>
-
-      <div class="photo-item" data-cat="concert">
-        <img src="images/PhotoDeguisement.jpg" alt="">
-      </div>
-
-      <div class="photo-item" data-cat="concert">
-        <img src="images/PhotoMaxGardeImperiale.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--wide" data-cat="concert">
-        <img src="images/PhotoGroupeGardeImperiale.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--mid" data-cat="concert">
-        <img src="images/PhotoGroupe3Harmonies.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--mid" data-cat="concert">
-        <img src="images/PhotoGroupeVillage.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--mid" data-cat="concert">
-        <img src="images/PhotoGroupeConcertVillageV2.jpg" alt="">
-      </div>
-
-
-      <div class="photo-item" data-cat="coulisses">
-        <img src="images/PhotoTrombone.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--wide" data-cat="coulisses">
-        <img src="images/PhotoGateau210Ans.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--wide" data-cat="animation">
-        <img src="images/PhotoGroupeDefiles2.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--mid" data-cat="animation">
-        <img src="images/PhotoGroupeRepasAnciens.jpg" alt="">
-      </div>
-
-      <div class="photo-item" data-cat="animation">
-        <img src="images/PhotoGroupeDefiles4.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--wide" data-cat="animation">
-        <img src="images/PhotoGroupeCourse.jpg" alt="">
-      </div>
-
-      <div class="photo-item photo-item--wide" data-cat="animation">
-        <img src="images/PhotoGroupeDefiles3.jpg" alt="">
-      </div>
-      
-      <div class="photo-item photo-item--mid" data-cat="animation">
-        <img src="images/PhotoTromboneCourse.jpg" alt="">
-      </div>
-
+      <div class="photo-item" data-cat="concert"><img src="images/PhotoConcert.jpg" alt=""></div>
+      <div class="photo-item photo-item--wide" data-cat="concert"><img src="images/PhotoConcert2.jpg" alt=""></div>
+      <div class="photo-item photo-item--wide" data-cat="concert"><img src="images/PhotoConcertGardeImperiale2.jpg" alt=""></div>
+      <div class="photo-item" data-cat="concert"><img src="images/PhotoDeguisement.jpg" alt=""></div>
+      <div class="photo-item" data-cat="concert"><img src="images/PhotoMaxGardeImperiale.jpg" alt=""></div>
+      <div class="photo-item photo-item--wide" data-cat="concert"><img src="images/PhotoGroupeGardeImperiale.jpg" alt=""></div>
+      <div class="photo-item photo-item--mid" data-cat="concert"><img src="images/PhotoGroupe3Harmonies.jpg" alt=""></div>
+      <div class="photo-item photo-item--mid" data-cat="concert"><img src="images/PhotoGroupeVillage.jpg" alt=""></div>
+      <div class="photo-item photo-item--mid" data-cat="concert"><img src="images/PhotoGroupeConcertVillageV2.jpg" alt=""></div>
+      <div class="photo-item" data-cat="coulisses"><img src="images/PhotoTrombone.jpg" alt=""></div>
+      <div class="photo-item photo-item--wide" data-cat="coulisses"><img src="images/PhotoGateau210Ans.jpg" alt=""></div>
+      <div class="photo-item photo-item--wide" data-cat="animation"><img src="images/PhotoGroupeDefiles2.jpg" alt=""></div>
+      <div class="photo-item photo-item--mid" data-cat="animation"><img src="images/PhotoGroupeRepasAnciens.jpg" alt=""></div>
+      <div class="photo-item" data-cat="animation"><img src="images/PhotoGroupeDefiles4.jpg" alt=""></div>
+      <div class="photo-item photo-item--wide" data-cat="animation"><img src="images/PhotoGroupeCourse.jpg" alt=""></div>
+      <div class="photo-item photo-item--wide" data-cat="animation"><img src="images/PhotoGroupeDefiles3.jpg" alt=""></div>
+      <div class="photo-item photo-item--mid" data-cat="animation"><img src="images/PhotoTromboneCourse.jpg" alt=""></div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-
-  <!-- ===== SECTION PROGRAMMES ===== -->
+  <!-- PROGRAMMES -->
   <section class="section" id="programmes">
     <p class="section-tag">Archives musicales</p>
     <h2>Programmes</h2>
@@ -153,7 +65,6 @@
 
     <div class="programmes-list">
 
-      <!-- Programme 1 -->
       <article class="programme-item">
         <div class="programme-img-wrap">
           <img src="images/ProgrammeHiver2025.jpg" alt="Programme Concert de Noël 2025">
@@ -161,9 +72,7 @@
         <div class="programme-content">
           <p class="programme-date">Décembre 2025</p>
           <h3>Concert de Noël</h3>
-          <p class="programme-body">
-            Un programme festif vous rappelant vos plus belles années, accompagné en seconde partie de l'harmonie de Gevrey Chambertin.
-          </p>
+          <p class="programme-body">Un programme festif vous rappelant vos plus belles années, accompagné en seconde partie de l'harmonie de Gevrey Chambertin.</p>
           <div class="programme-oeuvres">
             <p class="programme-oeuvres-label">Au programme</p>
             <ul>
@@ -172,14 +81,11 @@
               <li>Misirlou — Dick Dale / Henk Ummels</li>
             </ul>
           </div>
-          <!-- Décommenter si vous avez un PDF à télécharger -->
-          <!-- <a class="programme-dl" href="programmes/noel-2024.pdf" download>Télécharger le programme (PDF)</a> -->
         </div>
       </article>
 
       <div class="programme-sep"></div>
 
-      <!-- Programme 2 -->
       <article class="programme-item programme-item--reverse">
         <div class="programme-img-wrap">
           <img src="images/ProgrammeEte2025.jpg" alt="Programme Concert de Printemps 2025">
@@ -187,9 +93,7 @@
         <div class="programme-content">
           <p class="programme-date">Mai 2025</p>
           <h3>Concert de Printemps</h3>
-          <p class="programme-body">
-              tzqohqballalalblatpoatoiajtajblkjiojzaoi joaijpoai jtaoizjopij toaizjoajzj. Avec en seconde partie, la Garde Impériale de Dijon.
-          </p>
+          <p class="programme-body">tzqohqballalalblatpoatoiajtajblkjiojzaoi joaijpoai jtaoizjopij toaizjoajzj. Avec en seconde partie, la Garde Impériale de Dijon.</p>
           <div class="programme-oeuvres">
             <p class="programme-oeuvres-label">Au programme</p>
             <ul>
@@ -203,17 +107,14 @@
 
       <div class="programme-sep"></div>
 
-      <!-- Programme 3 -->
       <article class="programme-item">
         <div class="programme-img-wrap">
-          <img src="images/ProgrammeHiver2024.jpg" alt="Programme Concert de Noël 2025">
+          <img src="images/ProgrammeHiver2024.jpg" alt="Programme Concert de Noël 2024">
         </div>
         <div class="programme-content">
           <p class="programme-date">Decembre 2024</p>
           <h3>Concert de Noël</h3>
-          <p class="programme-body">
-            tzqpjtqiozjtp qozitqozj tpqozijtqopzij tqpzoij tzqpoij qzpo jtioqjz o. Avec en seconde partie, l'harmonie de Chagny.
-          </p>
+          <p class="programme-body">tzqpjtqiozjtp qozitqozj tpqozijtqopzij tqpzoij tzqpoij qzpo jtioqjz o. Avec en seconde partie, l'harmonie de Chagny.</p>
           <div class="programme-oeuvres">
             <p class="programme-oeuvres-label">Au programme</p>
             <ul>
@@ -230,45 +131,29 @@
 
   <div class="section-divider"></div>
 
-
-  <!-- ===== SECTION VIDÉOS ===== -->
+  <!-- VIDÉOS -->
   <section class="section" id="videos">
     <p class="section-tag">En images et en son</p>
     <h2>Vidéos</h2>
     <div class="section-line"></div>
 
     <div class="video-grid-short">
-
       <div class="video-item">
-        <div class="video-embed-wrap-short">
-          <video controls poster="">
-            <source src="videos/VideoConcert2.mp4" type="video/mp4">
-          </video>
-        </div>
+        <div class="video-embed-wrap-short"><video controls><source src="videos/VideoConcert2.mp4" type="video/mp4"></video></div>
         <div class="video-info">
           <p class="video-title">Misirlou - Concert d'hiver 2025</p>
           <p class="video-desc">description courte tiqzojtiozqjtqz</p>
         </div>
       </div>
-
       <div class="video-item">
-        <div class="video-embed-wrap-short">
-          <video controls poster="">
-            <source src="videos/VideoConcert.mp4" type="video/mp4">
-          </video>
-        </div>
+        <div class="video-embed-wrap-short"><video controls><source src="videos/VideoConcert.mp4" type="video/mp4"></video></div>
         <div class="video-info">
           <p class="video-title">Ennio Morricone - Concert d'hiver 2025</p>
           <p class="video-desc">description courte tiqzojtiozqjtqz</p>
         </div>
       </div>
-
       <div class="video-item">
-        <div class="video-embed-wrap-short">
-          <video controls poster="">
-            <source src="videos/DefileNSG.mp4" type="video/mp4">
-          </video>
-        </div>
+        <div class="video-embed-wrap-short"><video controls><source src="videos/DefileNSG.mp4" type="video/mp4"></video></div>
         <div class="video-info">
           <p class="video-title">Défilé à Nuits-St-Georges</p>
           <p class="video-desc">description courte tiqzojtiozqjtqz</p>
@@ -278,135 +163,82 @@
 
     <div class="video-grid">
       <div class="video-item">
-        <div class="video-embed-wrap">
-          <video controls poster="">
-            <source src="videos/VideoCourse.mp4" type="video/mp4">
-          </video>
-        </div>
+        <div class="video-embed-wrap"><video controls><source src="videos/VideoCourse.mp4" type="video/mp4"></video></div>
         <div class="video-info">
           <p class="video-title">Course de Nuits-St-Georges</p>
           <p class="video-desc">description courte tiqzojtiozqjtqz</p>
         </div>
       </div>
-
       <div class="video-item">
         <div class="video-embed-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/36CkzuWgeo4"
-            title="Concert d'hiver 2024"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/36CkzuWgeo4" title="Concert d'hiver 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <p class="video-title">Tetris - Concert d'hiver 2024</p>
           <p class="video-desc">Présentation originale et début du morceau</p>
         </div>
       </div>
-
-
       <div class="video-item">
         <div class="video-embed-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/Gnt5qEVp-AA"
-            title="Concert de Printemps 2024"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/Gnt5qEVp-AA" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <p class="video-title">Le Livre de la Jungle - Concert d'hiver 2024</p>
           <p class="video-desc">Solo de trompette</p>
         </div>
       </div>
-
       <div class="video-item">
         <div class="video-embed-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/pX4J1RFA4dQ"
-            title="Concert de Printemps 2024"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/pX4J1RFA4dQ" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <p class="video-title">Présentation Originale de Mary Poppins - Concert de printemps 2024</p>
           <p class="video-desc">XXXXXXXX</p>
         </div>
       </div>
-
       <div class="video-item">
         <div class="video-embed-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/ENkxYHwYmYY"
-            title="Concert de Printemps 2024"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/ENkxYHwYmYY" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <p class="video-title">Un petit tour en Bretagne</p>
           <p class="video-desc">XXXX</p>
         </div>
       </div>
-
       <div class="video-item">
         <div class="video-embed-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/uBqHFuVmiJ4?origin=http://127.0.0.1:5500/galerie.html#videos" 
-            title="Concert de Printemps 2024"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/uBqHFuVmiJ4" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <p class="video-title">Pirates des Caraïbes - Concert de printemps 2024</p>
           <p class="video-desc">XXXX</p>
         </div>
       </div>
-      
       <div class="video-item">
         <div class="video-embed-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/Ey7lOy6JMbg"
-            title="Concert de Printemps 2024"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/Ey7lOy6JMbg" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
           <p class="video-title">In the Stone - Concert d'hiver 2023</p>
           <p class="video-desc">XXXX</p>
         </div>
       </div>
-
-
     </div>
   </section>
-
-
-  <footer><p>&copy; 2025 &mdash; L'Harmonie de Nuits-St-Georges &mdash; Tous droits réservés</p></footer>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">✕</button>
     <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Précédent">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div class="lightbox-img-wrap">
-      <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    </div>
+    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightboxImg" src="" alt=""></div>
     <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Suivant">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <p class="lightbox-counter" id="lightboxCounter"></p>
   </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>

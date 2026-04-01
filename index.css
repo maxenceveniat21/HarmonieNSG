@@ -1,8 +1,6 @@
 /* =============================================
    ACCUEIL — Styles spécifiques
-   (La typographie de base vient de style.css)
    ============================================= */
-
 
 /* ===== HERO ===== */
 .hero {
@@ -16,7 +14,7 @@
   overflow: hidden;
 }
 
-/* Lignes de portée musicale décoratives */
+/* Portée musicale décorative */
 .hero::before {
   content: '';
   position: absolute;
@@ -29,50 +27,38 @@
   pointer-events: none;
 }
 
-
-
-/* Images décoratives notes de musique */
+/* Images décoratives */
 .hero-deco {
   position: absolute;
-  opacity: 1;
   pointer-events: none;
   user-select: none;
 }
-
 .hero-deco-top-left {
-  left: -2%;
-  top: 50%;
+  left: -2%; top: 50%;
   transform: translateY(-50%);
-  width: clamp(200px, 28vw, 600px);  /* ← s'adapte à la largeur d'écran */
+  width: clamp(200px, 28vw, 600px);
 }
-
 .hero-deco-top-right {
-  right: 7%;
-  top: -1%;
+  right: 7%; top: -1%;
   width: clamp(100px, 14vw, 250px);
 }
-
 .hero-deco-bottom-right {
-  right: 0%;
-  top: 50%;
+  right: 0%; top: 50%;
   transform: rotate(-40deg);
   width: clamp(180px, 30vw, 600px);
 }
 
-/* Tablette : on réduit encore */
 @media (max-width: 1024px) {
-  .hero-deco-top-left    { width: clamp(80px, 22vw, 180px); }
+  .hero-deco-top-left     { width: clamp(80px, 22vw, 180px); }
   .hero-deco-bottom-right { width: clamp(120px, 22vw, 350px); }
 }
-
-/* Mobile */
 @media (max-width: 700px) {
   .hero-deco-bottom-right { display: none; }
-  .hero-deco-top-right { right: 40%; transform: rotate(0deg); top: 2%;}
-  .hero-deco-top-left {left: 35%; transform: rotate(0deg); top: 80%;}
+  .hero-deco-top-right    { right: 40%; transform: rotate(0deg); top: 2%; }
+  .hero-deco-top-left     { left: 35%; transform: rotate(0deg); top: 80%; }
 }
 
-/* Contenu centré du hero */
+/* Contenu centré */
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -81,7 +67,6 @@
   z-index: 1;
 }
 
-/* Petite étiquette au-dessus du titre */
 .hero-eyebrow {
   font-family: var(--font-caps);
   font-size: var(--text-xs);
@@ -94,7 +79,6 @@
   animation: fadeUp 0.9s ease both;
 }
 
-/* Titre principal — surcharge h1 de base */
 .hero h1 {
   font-size: clamp(3rem, 7vw, 6rem);
   margin-bottom: 1.8rem;
@@ -102,17 +86,13 @@
 }
 .hero h1 em { font-style: italic; color: #1a0f6e; }
 
-/* Filet séparateur */
 .hero-sep {
-  width: 50px;
-  height: 1.5px;
-  background: var(--navy);
-  opacity: 0.25;
+  width: 50px; height: 1.5px;
+  background: var(--navy); opacity: 0.25;
   margin: 0 auto 1.8rem;
   animation: fadeUp 0.9s 0.3s ease both;
 }
 
-/* Sous-titre */
 .hero-sub {
   font-size: 1.25rem;
   font-weight: 300;
@@ -122,7 +102,6 @@
   animation: fadeUp 0.9s 0.45s ease both;
 }
 
-/* Bouton CTA */
 .hero-cta {
   font-family: var(--font-caps);
   font-size: var(--text-xs);
@@ -140,15 +119,15 @@
 .hero-cta:hover { background: transparent; color: var(--navy); }
 
 
-/* ===== STATS ===== */
-
-.logo-right-text{
+/* ===== LOGO SECTION "QUI SOMMES-NOUS" ===== */
+.logo-right-text {
   position: absolute;
   width: 300px;
-  right: 6%;
-  top: 105%;
+  right: 6%; top: 105%;
 }
 
+
+/* ===== STATS ===== */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -158,11 +137,7 @@
   margin-top: 4rem;
 }
 
-.stat {
-  background: var(--cream);
-  padding: 2.5rem;
-  text-align: center;
-}
+.stat { background: var(--cream); padding: 2.5rem; text-align: center; }
 
 .stat-number {
   font-family: var(--font-serif);
@@ -184,16 +159,11 @@
   display: block;
 }
 
-@media (max-width: 640px) {
-  .stats { grid-template-columns: 1fr; }
-}
+@media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
 
 
 /* ===== MOT DU PRÉSIDENT ===== */
-.president-section {
-  background: var(--navy);
-  padding: 6rem 2.5rem;
-}
+.president-section { background: var(--navy); padding: 6rem 2.5rem; }
 
 .president-inner {
   max-width: var(--section-max);
@@ -204,95 +174,61 @@
   align-items: center;
 }
 
-.president-photo-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
+.president-photo-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
 
 .president-photo {
-  width: 180px;
-  height: 180px;
+  width: 180px; height: 180px;
   border-radius: 50%;
   border: 2px solid rgba(255, 235, 184, 0.3);
   background: rgba(255, 235, 184, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
 
 .president-name {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--gold);
-  text-align: center;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--gold); text-align: center;
 }
 
 .president-role {
   font-family: var(--font-caps);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0.8;
-  text-align: center;
-  margin-top: 0.3rem;
+  font-size: var(--text-xs); font-weight: 400;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.8;
+  text-align: center; margin-top: 0.3rem;
 }
 
 .president-quote-wrap { position: relative; }
 
 .president-quote-mark {
   font-family: var(--font-serif);
-  font-size: 8rem;
-  line-height: 1;
-  color: var(--gold);
-  opacity: 0.15;
-  position: absolute;
-  top: -2rem;
-  left: -1rem;
-  pointer-events: none;
-  user-select: none;
+  font-size: 8rem; line-height: 1;
+  color: var(--gold); opacity: 0.15;
+  position: absolute; top: -2rem; left: -1rem;
+  pointer-events: none; user-select: none;
 }
 
 .president-tag {
   font-family: var(--font-caps);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0.75;
-  margin-bottom: 1.5rem;
-  display: block;
+  font-size: var(--text-xs); font-weight: 400;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.75;
+  margin-bottom: 1.5rem; display: block;
 }
 
 .president-quote {
   font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--gold);
-  line-height: 1.7;
-  opacity: 0.9;
-  position: relative;
-  z-index: 1;
+  font-weight: 300; font-style: italic;
+  color: var(--gold); line-height: 1.7;
+  opacity: 0.9; position: relative; z-index: 1;
 }
 
-.president-sig {
-  margin-top: 2rem;
-  width: 40px;
-  height: 1px;
-  background: rgba(255, 235, 184, 0.3);
-}
+.president-sig { margin-top: 2rem; width: 40px; height: 1px; background: rgba(255, 235, 184, 0.3); }
 
 @media (max-width: 860px) {
   .president-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
   .president-photo-wrap { margin: 0 auto; }
   .president-sig { margin: 1.5rem auto 0; }
 }
-@media (max-width: 640px) {
-  .president-section { padding: 4rem 1.5rem; }
-}
+@media (max-width: 640px) { .president-section { padding: 4rem 1.5rem; } }
