@@ -7,7 +7,7 @@
    ========================================= */
 (function () {
   var nav = ['index.html','historique.html','agenda.html','galerie.html','contact.html'];
-  var labels = ['Accueil','Historique','Agenda','Galerie','Contact'];
+  var labels = ['Accueil','Historique','Agenda','Galerie','Contact & Partenaires'];
 
   var navLinks = nav.map(function (href, i) {
     return (i === 1 ? '<div class="nav-divider"></div>' : '')
