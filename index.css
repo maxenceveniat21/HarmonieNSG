@@ -103,6 +103,9 @@
 }
 
 .hero-cta {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   font-family: var(--font-caps);
   font-size: var(--text-xs);
   font-weight: 400;
@@ -116,6 +119,7 @@
   animation: fadeUp 0.9s 0.6s ease both;
   display: inline-block;
 }
+
 .hero-cta:hover { background: transparent; color: var(--navy); }
 
 

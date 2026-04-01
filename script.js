@@ -15,7 +15,7 @@
   }).join('');
 
   var headerHTML = '<header><div class="header-inner"><div class="header-left">'
-    + '<img class="logo-header" src="cle/Logo Harmonie Municipale NSG 2.png" alt="">'
+    + '<a class="site-title" href="index.html"><img class="logo-header" src="cle/Logo Harmonie Municipale NSG 2.png" alt="">'
     + '<a class="site-title" href="index.html"><span class="label">Musique &amp; Partage</span>'
     + '<span class="name">L\'Harmonie de Nuits-St-Georges</span></a></div>'
     + '<button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">'
@@ -252,4 +252,56 @@ window.addEventListener('DOMContentLoaded', function () {
     };
   }
 
+  /* =========================================
+   VIGNETTES AFFICHE + LIGHTBOX ÉVÉNEMENT
+   ========================================= */
+  var eventLightbox     = document.getElementById('eventLightbox');
+  var eventLightboxImg  = document.getElementById('eventLightboxImg');
+  var eventLightboxClose = document.getElementById('eventLightboxClose');
+
+  if (eventLightbox) {
+    document.querySelectorAll('.event-card[data-affiche]').forEach(function (card) {
+      var src = card.getAttribute('data-affiche');
+      var row = card.querySelector('.event-date-row');
+      if (!row || !src) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'event-thumb-wrap';
+      wrap.setAttribute('role', 'button');
+      wrap.setAttribute('aria-label', "Voir l'affiche en grand");
+      wrap.setAttribute('tabindex', '0');
+
+      var img = document.createElement('img');
+      img.className = 'event-thumb';
+      img.src = src;
+      img.alt = 'Affiche';
+
+      wrap.appendChild(img);
+      row.appendChild(wrap);
+
+      function openAffiche() {
+        eventLightboxImg.src = src;
+        eventLightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      wrap.addEventListener('click', openAffiche);
+      wrap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') openAffiche();
+      });
+    });
+
+    function closeAffiche() {
+      eventLightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    eventLightboxClose.addEventListener('click', closeAffiche);
+    eventLightbox.addEventListener('click', function (e) {
+      if (e.target === eventLightbox) closeAffiche();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && eventLightbox.classList.contains('open')) closeAffiche();
+    });
+  }
 });

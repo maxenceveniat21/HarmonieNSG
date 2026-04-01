@@ -230,7 +230,7 @@ header {
 /* ===== PAGE HERO ===== */
 .page-hero {
   background: var(--navy);
-  padding: 5rem 2.5rem 4rem;
+  padding: 2rem 2.5rem 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -253,7 +253,7 @@ header {
   font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #fffae8;
   opacity: 0.85;
   margin-bottom: 1.2rem;
   display: block;
@@ -266,9 +266,7 @@ header {
   color: var(--gold);
   line-height: 1.1;
 }
-.page-hero h1 em { font-style: italic; color: #fffae8; }
-
-.page-hero-line { width: 45px; height: 1px; background: rgba(255, 235, 184, 0.3); margin: 2rem auto 0; }
+.page-hero h1 em { font-style: italic; color: var(--gold); }
 
 
 /* ===== FOOTER ===== */
