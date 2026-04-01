@@ -6,7 +6,7 @@
 
 /* ===== TIMELINE ===== */
 .timeline {
-  max-width: 800px;
+  max-width: 900px;
   margin: 3rem auto 0;
   position: relative;
   padding: 2rem 0;
@@ -44,9 +44,42 @@
 
 /* Année — étiquette en capitales */
 .timeline-year {
+  position: absolute;
+  left: -9%;
+  top: -6px;
   font-family: var(--font-caps);
   font-size: var(--text-s);
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.65;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timeline-year-last {
+  position: absolute;
+  left: -23%;
+  top: -6px;
+  font-family: var(--font-caps);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.65;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timeline-year-date {
+  position: absolute;
+  left: -15%;
+  top: -2%;
+  font-family: var(--font-caps);
+  font-size: var(--text-s);
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--navy);
@@ -63,6 +96,7 @@
 /* Texte descriptif — hérite de p (style.css), légèrement atténué */
 .timeline-text {
   opacity: 0.8;
+  text-align: justify;
 }
 
 .timeline-photo {
@@ -70,4 +104,11 @@
   margin-left: 0.5rem;
   width: 500px;
   
+}
+
+.timeline-photo-small-side {
+  position: absolute;
+  top: 15%;
+  right: -40%;
+  width: 220px;
 }
