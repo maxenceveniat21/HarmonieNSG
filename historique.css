@@ -59,33 +59,13 @@
 }
 
 .timeline-year-last {
-  position: absolute;
   left: -23%;
   top: -6px;
-  font-family: var(--font-caps);
-  font-size: var(--text-s);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.65;
-  margin-bottom: 0.5rem;
-  display: block;
 }
 
 .timeline-year-date {
-  position: absolute;
   left: -15%;
-  top: -2%;
-  font-family: var(--font-caps);
-  font-size: var(--text-s);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0.65;
-  margin-bottom: 0.5rem;
-  display: block;
+  top: -6px;
 }
 
 /* Titre de l'événement — hérite de h3 (style.css) */
@@ -99,16 +79,30 @@
   text-align: justify;
 }
 
+.photo-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start; /* aligne en haut */
+}
+.photo-row img {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
 .timeline-photo {
   margin-top: 1rem;
   margin-left: 0.5rem;
   width: 500px;
-  
 }
-
+.timeline-photo-long {
+  height: 450px;
+}
 .timeline-photo-small-side {
   position: absolute;
   top: 15%;
   right: -40%;
-  width: 220px;
+  height: 220px;
+}
+.timeline-photo-small-side-v2 {
+  height: 450px;
 }
