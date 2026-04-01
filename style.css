@@ -152,7 +152,6 @@ header {
 .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .menu-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-
 /* ===== MENU OVERLAY ===== */
 .nav-overlay {
   position: fixed;

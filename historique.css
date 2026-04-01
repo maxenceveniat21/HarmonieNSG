@@ -37,7 +37,7 @@
   position: absolute;
   left: -9%; top: -6px;
   font-family: var(--font-caps);
-  font-size: var(--text-xs);
+  font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
