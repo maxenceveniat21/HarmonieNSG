@@ -125,7 +125,7 @@
 .logo-right-text {
   position: absolute;
   width: clamp(100px, 14vw, 260px);
-  right: 6%; top: 105%;
+  right: 6%; top: 100%;
 }
 
 

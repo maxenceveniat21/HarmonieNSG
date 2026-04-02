@@ -60,8 +60,7 @@
 .timeline-photo        { margin-top: 1rem; margin-left: 0.5rem; width: 100%; max-width: 480px; }
 .timeline-photo-long   { height: 450px; max-height: 55vh; object-fit: cover; }
 .timeline-photo-small-side {
-  position: absolute;
-  top: 15%; right: -40%;
+  max-height: 55vh; object-fit: cover; max-width: 45%;
   height: 220px;
 }
 .timeline-photo-small-side-v2 { height: 420px; max-height: 55vh; object-fit: cover; max-width: 45%; }

@@ -49,22 +49,28 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  align-items: start;
 }
 
+/* Base : images portrait — 1 colonne sur 3 */
 .photo-item {
   overflow: hidden;
   background: rgba(2, 0, 71, 0.04);
   border: 1px solid rgba(2, 0, 71, 0.08);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  /* height explicite pour que les items aient une taille cohérente */
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/4;
 }
 .photo-item:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(2, 0, 71, 0.1); }
 
-.photo-item--wide { grid-column: span 2; aspect-ratio: 16/7; }
-.photo-item--tall { grid-row: span 2; aspect-ratio: auto; }
-.photo-item--mid  { aspect-ratio: 4/3; }
+/* Wide : paysage large — 2 colonnes sur 3 */
+.photo-item--wide { grid-column: span 2; aspect-ratio: 6/4; }
+
+/* Mid : paysage standard — 1 colonne */
+.photo-item--mid { grid-column: span 1; aspect-ratio: 4/3; }
+
+/* Tall : portrait (identique au base) */
+.photo-item--tall { aspect-ratio: 3/4; }
 
 .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
 .photo-item:hover img { transform: scale(1.03); }
@@ -298,9 +304,9 @@
   .galerie-nav-link { letter-spacing: 0.15em; }
 
   .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-  .photo-item       { aspect-ratio: 4/3; }
-  .photo-item--wide { grid-column: span 1; aspect-ratio: 4/3; }
-  .photo-item--tall { grid-row: span 1; aspect-ratio: 4/3; }
+  .photo-item       { aspect-ratio: 3/4; }
+  .photo-item--wide { grid-column: span 2; aspect-ratio: 16/7; }
+  .photo-item--tall { grid-column: span 1; aspect-ratio: 3/4; }
   .photo-item--mid  { grid-column: span 1; aspect-ratio: 4/3; }
 
   .programme-item,
@@ -339,9 +345,9 @@
 
   .photo-grid { grid-template-columns: 1fr; gap: 0.6rem; }
   .photo-item,
+  .photo-item--tall { grid-column: span 1; aspect-ratio: 3/4; }
   .photo-item--wide,
-  .photo-item--tall,
-  .photo-item--mid { grid-column: span 1; grid-row: span 1; aspect-ratio: 4/3; }
+  .photo-item--mid  { grid-column: span 1; aspect-ratio: 4/3; }
 
   .video-embed-wrap-short { width: 100%; }
   .video-grid-short { gap: 1.5rem; }
@@ -360,5 +366,5 @@
 @media (max-width: 380px) {
   .galerie-nav { flex-wrap: wrap; padding: 0.3rem 0.5rem; }
   .galerie-nav-link { font-size: 0.65rem; padding: 0.7rem 0.3rem; }
-  .photo-grid { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: 1fr; gap: 0.6rem; }
 }
