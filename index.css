@@ -36,26 +36,16 @@
 .hero-deco-top-left {
   left: -2%; top: 50%;
   transform: translateY(-50%);
-  width: clamp(200px, 28vw, 600px);
+  width: clamp(160px, 22vw, 500px);
 }
 .hero-deco-top-right {
   right: 7%; top: -1%;
-  width: clamp(100px, 14vw, 250px);
+  width: clamp(80px, 10vw, 200px);
 }
 .hero-deco-bottom-right {
   right: 0%; top: 50%;
   transform: rotate(-40deg);
-  width: clamp(180px, 30vw, 600px);
-}
-
-@media (max-width: 1024px) {
-  .hero-deco-top-left     { width: clamp(80px, 22vw, 180px); }
-  .hero-deco-bottom-right { width: clamp(120px, 22vw, 350px); }
-}
-@media (max-width: 700px) {
-  .hero-deco-bottom-right { display: none; }
-  .hero-deco-top-right    { right: 40%; transform: rotate(0deg); top: 2%; }
-  .hero-deco-top-left     { left: 35%; transform: rotate(0deg); top: 80%; }
+  width: clamp(150px, 24vw, 500px);
 }
 
 /* Contenu centré */
@@ -80,7 +70,7 @@
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 6rem);
   margin-bottom: 1.8rem;
   animation: fadeUp 0.9s 0.15s ease both;
 }
@@ -100,6 +90,14 @@
   max-width: 520px;
   margin: 0 auto 3rem;
   animation: fadeUp 0.9s 0.45s ease both;
+}
+
+.hero-cta-column {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.9s 0.55s ease both;
 }
 
 .hero-cta {
@@ -126,7 +124,7 @@
 /* ===== LOGO SECTION "QUI SOMMES-NOUS" ===== */
 .logo-right-text {
   position: absolute;
-  width: 300px;
+  width: clamp(100px, 14vw, 260px);
   right: 6%; top: 105%;
 }
 
@@ -145,7 +143,7 @@
 
 .stat-number {
   font-family: var(--font-serif);
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: var(--navy);
   display: block;
@@ -162,8 +160,6 @@
   margin-top: 0.5rem;
   display: block;
 }
-
-@media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
 
 
 /* ===== MOT DU PRÉSIDENT ===== */
@@ -222,7 +218,7 @@
 }
 
 .president-quote {
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
   font-weight: 300; font-style: italic;
   color: var(--gold); line-height: 1.7;
   opacity: 0.9; position: relative; z-index: 1;
@@ -230,9 +226,74 @@
 
 .president-sig { margin-top: 2rem; width: 40px; height: 1px; background: rgba(255, 235, 184, 0.3); }
 
+
+/* =============================================
+   RESPONSIVE ACCUEIL
+   ============================================= */
+
+/* ── 1440px ── */
+@media (max-width: 1440px) {
+  .hero { min-height: calc(100vh - 70px); padding: 4rem 2rem 3rem; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 5rem); }
+  .president-section { padding: 5rem 2rem; }
+  .president-inner { gap: 3.5rem; }
+}
+
+/* ── 1100px ── */
+@media (max-width: 1100px) {
+  .hero-deco-top-left     { width: clamp(120px, 18vw, 280px); }
+  .hero-deco-bottom-right { width: clamp(120px, 20vw, 320px); }
+  .hero-deco-top-right    { width: clamp(70px, 9vw, 150px); }
+  .president-inner { gap: 2.5rem; }
+  .logo-right-text { width: clamp(90px, 12vw, 200px); }
+}
+
+/* ── Tablette 860px ── */
 @media (max-width: 860px) {
-  .president-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+  .hero { padding: 3.5rem 1.5rem 3rem; min-height: 70vh; }
+  .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
+  .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.15em; }
+  .hero-deco-bottom-right { display: none; }
+  .hero-deco-top-right { right: 2%; top: 2%; width: clamp(60px, 10vw, 120px); }
+  .hero-deco-top-left  { width: clamp(100px, 18vw, 220px); }
+  .hero-cta { padding: 0.85rem 2rem; }
+
+  .logo-right-text {
+    position: static;
+    display: block;
+    width: clamp(80px, 25vw, 160px);
+    margin: 1.5rem auto 0;
+  }
+
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .stat { padding: 2rem 1rem; }
+  .stat-number { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+
+  .president-section { padding: 4rem 1.5rem; }
+  .president-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
   .president-photo-wrap { margin: 0 auto; }
   .president-sig { margin: 1.5rem auto 0; }
+  .president-photo { width: 140px; height: 140px; }
+  .president-quote { font-size: clamp(1rem, 2.5vw, 1.4rem); }
 }
-@media (max-width: 640px) { .president-section { padding: 4rem 1.5rem; } }
+
+/* ── Mobile 640px ── */
+@media (max-width: 640px) {
+  .hero { padding: 2.5rem 1rem 2.5rem; min-height: 80vh; }
+  .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+  .hero-deco-top-right { display: none; }
+  .hero-deco-top-left  { display: none; }
+  .hero-cta-column { flex-direction: column; align-items: center; gap: 0.5rem; }
+  .hero-cta { padding: 0.8rem 1.8rem; margin: 0; }
+
+  .stats { grid-template-columns: 1fr; }
+  .stat { padding: 1.5rem 1rem; }
+}
+
+/* ── Mobile 480px ── */
+@media (max-width: 480px) {
+  .president-section { padding: 3rem 1rem; }
+  .president-photo { width: 110px; height: 110px; }
+  .president-name { font-size: 1rem; }
+  .president-quote-mark { font-size: 5rem; }
+}

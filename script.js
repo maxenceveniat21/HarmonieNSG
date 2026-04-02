@@ -3,6 +3,29 @@
    ============================================= */
 
 /* =========================================
+   ZOOM ADAPTATIF — Uniquement pour < 1024px (mobile/tablette)
+   Sur desktop (>= 1024px), le CSS responsive natif gère tout
+   ========================================= */
+(function () {
+  var MIN_ZOOM   = 0.50;
+  var BREAKPOINT = 1024;
+
+  function applyZoom() {
+    var w = window.outerWidth || screen.width;
+    if (w >= BREAKPOINT) {
+      document.documentElement.style.zoom = '';
+      return;
+    }
+    /* Sur très petits écrans on peut légèrement réduire,
+       mais on laisse le CSS responsive faire son travail */
+    document.documentElement.style.zoom = '';
+  }
+
+  applyZoom();
+  window.addEventListener('resize', applyZoom);
+})();
+
+/* =========================================
    INJECTION HEADER / FOOTER
    ========================================= */
 (function () {
