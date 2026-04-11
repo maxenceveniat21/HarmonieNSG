@@ -170,7 +170,7 @@
 .video-grid-short {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem; margin-top: 3rem;
+  gap: 14rem; margin-top: 3rem;
 }
 
 .video-grid {
@@ -192,7 +192,7 @@
 
 /* Wrapper ratio 9:16 (shorts) */
 .video-embed-wrap-short {
-  position: relative; width: 70%;
+  position: relative; width: 100%;
   aspect-ratio: 9/16;
   background: rgba(2, 0, 71, 0.05);
   border: 1px solid rgba(2, 0, 71, 0.1);

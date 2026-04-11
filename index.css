@@ -33,19 +33,18 @@
   pointer-events: none;
   user-select: none;
 }
-.hero-deco-top-left {
-  left: -2%; top: 50%;
+.hero-deco-top-right {
+  right: -2%; top: 50%;
   transform: translateY(-50%);
   width: clamp(160px, 22vw, 500px);
 }
-.hero-deco-top-right {
-  right: 7%; top: -1%;
+.hero-deco-top-left {
+  left: 7%; top: 5%;
   width: clamp(80px, 10vw, 200px);
 }
-.hero-deco-bottom-right {
-  right: 0%; top: 50%;
-  transform: rotate(-40deg);
-  width: clamp(150px, 24vw, 500px);
+.hero-deco-bottom-left {
+  left: 7%; top: 60%;
+  width: clamp(80px, 24vw, 200px);
 }
 
 /* Contenu centré */
@@ -124,8 +123,8 @@
 /* ===== LOGO SECTION "QUI SOMMES-NOUS" ===== */
 .logo-right-text {
   position: absolute;
-  width: clamp(100px, 14vw, 260px);
-  right: 6%; top: 100%;
+  width: clamp(200px, 28vw, 520px);
+  right: 6%; top: 102%;
 }
 
 

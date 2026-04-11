@@ -48,7 +48,41 @@
 
   document.body.insertAdjacentHTML('afterbegin', headerHTML);
   document.body.insertAdjacentHTML('beforeend',
-    '<footer><p>&copy; 2025 &mdash; L\'Harmonie de Nuits-St-Georges &mdash; Tous droits réservés</p></footer>');
+    '<footer>'
+    + '<div class="footer-inner">'
+    + '<div class="footer-col">'
+    + '<p class="footer-title">L\'Harmonie de Nuits-St-Georges</p>'
+    + '<p class="footer-copy">&copy; 2026 &mdash; Tous droits réservés</p>'
+    + '<div class="footer-socials">'
+    + '<a class="footer-social" href="https://www.facebook.com/HarmonieNuitsStGeorges" target="_blank" rel="noopener" aria-label="Facebook">'
+    + '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>'
+    + '</a>'
+    + '<a class="footer-social" href="https://www.youtube.com/@HarmonieMunicipaledeNSG" target="_blank" rel="noopener" aria-label="YouTube">'
+    + '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>'
+    + '</a>'
+    + '</div>'
+    + '</div>'
+    + '<div class="footer-col footer-col--links">'
+    + '<p class="footer-col-title">Liens rapides</p>'
+    + '<div class="footer-links-grid">'
+    + '<a class="footer-link" href="index.html">Accueil</a>'
+    + '<a class="footer-link" href="historique.html">Historique</a>'
+    + '<a class="footer-link" href="agenda.html">Agenda</a>'
+    + '<a class="footer-link" href="galerie.html">Galerie</a>'
+    + '<a class="footer-link" href="contact.html">Contact</a>'
+    + '</div>'
+    + '</div>'
+    + '<div class="footer-col">'
+    + '<p class="footer-col-title">Répétitions</p>'
+    + '<p class="footer-info">Chaque vendredi soir à 20h30</p>'
+    + '<p class="footer-info">Nuits-Saint-Georges</p>'
+    + '</div>'
+    + '<div class="footer-col">'
+    + '<p class="footer-col-title">Contact</p>'
+    + '<a class="footer-link" href="mailto:harmonie.nuits@yahoo.fr">harmonie.nuits@yahoo.fr</a>'
+    + '</div>'
+    + '</div>'
+    + '</footer>');
 })();
 
 
@@ -267,11 +301,16 @@ window.addEventListener('DOMContentLoaded', function () {
   if (formBtn) {
     formBtn.onclick = function () {
       var prenom = document.getElementById('f-prenom').value.trim();
+      var nom    = document.getElementById('f-nom') ? document.getElementById('f-nom').value.trim() : '';
       var email  = document.getElementById('f-email').value.trim();
       var sujet  = document.getElementById('f-sujet').value;
       var msg    = document.getElementById('f-message').value.trim();
       if (!prenom || !email || !sujet || !msg) { alert('Merci de remplir tous les champs.'); return; }
-      alert('Merci ' + prenom + ' ! Votre message a bien été envoyé.');
+      var nomComplet = nom ? prenom + ' ' + nom : prenom;
+      var body = 'De : ' + nomComplet + ' (' + email + ')\n\n' + msg;
+      window.location.href = 'mailto:maximussdenuits@gmail.com'
+        + '?subject=' + encodeURIComponent(sujet)
+        + '&body=' + encodeURIComponent(body);
     };
   }
 
