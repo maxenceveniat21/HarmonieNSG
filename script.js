@@ -93,7 +93,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   function initCarousel(trackId, prevId, nextId) {
-  function initCarousel(trackId, prevId, nextId) {
     var track   = document.getElementById(trackId);
     var btnPrev = document.getElementById(prevId);
     var btnNext = document.getElementById(nextId);
@@ -353,4 +352,4 @@ window.addEventListener('DOMContentLoaded', function () {
       if (e.key === 'Escape' && eventLightbox.classList.contains('open')) closeAffiche();
     });
   }
-}});
+});
