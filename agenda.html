@@ -17,7 +17,6 @@
     <h1><em>Agenda<br>&amp; Événements</em></h1>
   </div>
 
-
   <section class="section">
     <p class="section-tag">Concerts à venir</p>
     <h2>Prochains concerts</h2>
@@ -29,12 +28,15 @@
       </button>
       <div class="carousel-track-wrapper">
         <div class="carousel-track" id="concertsTrack">
-          <div class="event-card" data-lat="46.9094212" data-lng="4.7523926" data-lieu="Chagny - Théâtre des Copiaus" data-map="mapConcerts" data-affiche="images/Affiche Concert Printemps 2026.jpg">
+          <div class="event-card" data-lat="46.9094212" data-lng="4.7523926" data-lieu="Chagny - Théâtre des Copiaus" data-map="mapConcerts">
             <p class="event-type">Concert</p>
             <div class="event-date-row">
               <div class="event-date-col">
                 <p class="event-date">25</p>
                 <p class="event-month">Avril 2026</p>
+              </div>
+              <div class="event-thumb-wrap" role="button" tabindex="0" aria-label="Voir l'affiche en grand">
+                <img class="event-thumb" src="images/Affiche Concert Printemps 2026.jpg" alt="Affiche">
               </div>
             </div>
             <div class="event-sep"></div>
@@ -223,9 +225,9 @@
   </section>
 
   <!-- LIGHTBOX AFFICHE -->
-  <div class="event-lightbox" id="eventLightbox">
-    <button class="event-lightbox-close" id="eventLightboxClose" aria-label="Fermer">✕</button>
-    <img id="eventLightboxImg" src="" alt="Affiche de l'événement">
+  <div class="lightbox" id="eventLightbox">
+    <button class="lightbox-close" id="eventLightboxClose" aria-label="Fermer">✕</button>
+    <div class="lightbox-img-wrap"><img class="lightbox-img" id="eventLightboxImg" src="" alt=""></div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

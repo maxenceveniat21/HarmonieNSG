@@ -2,28 +2,6 @@
    HARMONIE DE NUITS-ST-GEORGES — Script global
    ============================================= */
 
-/* =========================================
-   ZOOM ADAPTATIF — Uniquement pour < 1024px (mobile/tablette)
-   Sur desktop (>= 1024px), le CSS responsive natif gère tout
-   ========================================= */
-(function () {
-  var MIN_ZOOM   = 0.50;
-  var BREAKPOINT = 1024;
-
-  function applyZoom() {
-    var w = window.outerWidth || screen.width;
-    if (w >= BREAKPOINT) {
-      document.documentElement.style.zoom = '';
-      return;
-    }
-    /* Sur très petits écrans on peut légèrement réduire,
-       mais on laisse le CSS responsive faire son travail */
-    document.documentElement.style.zoom = '';
-  }
-
-  applyZoom();
-  window.addEventListener('resize', applyZoom);
-})();
 
 /* =========================================
    INJECTION HEADER / FOOTER
@@ -114,106 +92,7 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
 
-
-
-  /* =========================================
-     À LA UNE — Page d'accueil (affiche seule)
-     ========================================= */
-  (function () {
-    var section = document.getElementById('a-la-une-index');
-    if (!section) return;
-    var affiche = (typeof AFFICHE_UNE !== 'undefined') ? AFFICHE_UNE.trim() : '';
-    if (!affiche) { section.parentNode.removeChild(section); return; }
-
-    section.innerHTML = '<p class="section-tag">Prochainement</p>'
-      + '<h2>À la une</h2>'
-      + '<div class="section-line"></div>'
-      + '<div class="une-affiche-index" id="uneAfficheIndex" role="button" tabindex="0" aria-label="Agrandir l\'affiche">'
-      + '<img src="' + affiche + '" alt="Affiche du prochain concert">'
-      + '</div>';
-
-    var lb    = document.getElementById('indexLightbox');
-    var lbImg = document.getElementById('indexLightboxImg');
-    var lbClose = document.getElementById('indexLightboxClose');
-    var wrap  = document.getElementById('uneAfficheIndex');
-
-    function open() { lbImg.src = affiche; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
-
-    wrap.addEventListener('click', open);
-    wrap.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') open(); });
-    lbClose.addEventListener('click', close);
-    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
-  })();
-
-
-
-  (function () {
-    var section = document.getElementById('a-la-une');
-    if (!section) return;
-
-    /* AFFICHE_UNE et DATE_UNE sont définis dans agenda.html */
-    var affiche = (typeof AFFICHE_UNE !== 'undefined') ? AFFICHE_UNE.trim() : '';
-    var date    = (typeof DATE_UNE   !== 'undefined') ? DATE_UNE    : '';
-    var titre   = (typeof TITRE_UNE  !== 'undefined') ? TITRE_UNE   : 'Prochain concert';
-
-    if (!affiche && !date) {
-      /* Rien à afficher — on supprime la section */
-      section.parentNode.removeChild(section);
-      return;
-    }
-
-    var html = '<p class="section-tag">Prochainement</p>'
-             + '<h2>À la une</h2>'
-             + '<div class="section-line"></div>';
-
-    if (affiche) {
-      /* Mode affiche */
-      html += '<div class="une-wrapper">'
-            +   '<div class="une-affiche-wrap" id="uneAfficheWrap" role="button" tabindex="0" aria-label="Agrandir l\'affiche">'
-            +     '<img src="' + affiche + '" alt="Affiche du prochain concert">'
-            +     '<span class="une-affiche-zoom">Agrandir</span>'
-            +   '</div>'
-            +   '<div class="une-info">'
-            +     '<p class="section-tag">Prochain rendez-vous</p>'
-            +     '<h2>' + titre + '</h2>'
-            +     (date ? '<span class="une-date-badge">' + date + '</span>' : '')
-            +   '</div>'
-            + '</div>';
-    } else {
-      /* Mode date seule — pas d'affiche */
-      html += '<div class="une-date-only">'
-            +   '<p class="une-date-large">' + titre + '</p>'
-            +   (date ? '<span class="une-date-badge">' + date + '</span>' : '')
-            + '</div>';
-    }
-
-    section.innerHTML = html;
-
-    /* Ouvrir l'affiche dans la lightbox galerie si présente */
-    var wrap = document.getElementById('uneAfficheWrap');
-    var lb   = document.getElementById('lightbox');
-    var lbImg = document.getElementById('lightboxImg');
-    if (wrap && lb && lbImg) {
-      function openUneAffiche() {
-        lbImg.src = affiche;
-        lbImg.alt = 'Affiche du prochain concert';
-        document.getElementById('lightboxPrev').style.display = 'none';
-        document.getElementById('lightboxNext').style.display = 'none';
-        document.getElementById('lightboxCounter').style.display = 'none';
-        lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-      wrap.addEventListener('click', openUneAffiche);
-      wrap.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') openUneAffiche();
-      });
-    }
-  })();
-
-
-
+  function initCarousel(trackId, prevId, nextId) {
   function initCarousel(trackId, prevId, nextId) {
     var track   = document.getElementById(trackId);
     var btnPrev = document.getElementById(prevId);
@@ -442,38 +321,22 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   /* =========================================
-   VIGNETTES AFFICHE + LIGHTBOX ÉVÉNEMENT
-   ========================================= */
-  var eventLightbox     = document.getElementById('eventLightbox');
-  var eventLightboxImg  = document.getElementById('eventLightboxImg');
+     VIGNETTES AFFICHE + LIGHTBOX ÉVÉNEMENT
+     ========================================= */
+  var eventLightbox      = document.getElementById('eventLightbox');
+  var eventLightboxImg   = document.getElementById('eventLightboxImg');
   var eventLightboxClose = document.getElementById('eventLightboxClose');
 
   if (eventLightbox) {
-    document.querySelectorAll('.event-card[data-affiche]').forEach(function (card) {
-      var src = card.getAttribute('data-affiche');
-      var row = card.querySelector('.event-date-row');
-      if (!row || !src) return;
-
-      var wrap = document.createElement('div');
-      wrap.className = 'event-thumb-wrap';
-      wrap.setAttribute('role', 'button');
-      wrap.setAttribute('aria-label', "Voir l'affiche en grand");
-      wrap.setAttribute('tabindex', '0');
-
-      var img = document.createElement('img');
-      img.className = 'event-thumb';
-      img.src = src;
-      img.alt = 'Affiche';
-
-      wrap.appendChild(img);
-      row.appendChild(wrap);
+    document.querySelectorAll('.event-thumb-wrap').forEach(function (wrap) {
+      var img = wrap.querySelector('img');
+      if (!img) return;
 
       function openAffiche() {
-        eventLightboxImg.src = src;
+        eventLightboxImg.src = img.src;
         eventLightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
-
       wrap.addEventListener('click', openAffiche);
       wrap.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') openAffiche();
@@ -484,13 +347,10 @@ window.addEventListener('DOMContentLoaded', function () {
       eventLightbox.classList.remove('open');
       document.body.style.overflow = '';
     }
-
     eventLightboxClose.addEventListener('click', closeAffiche);
-    eventLightbox.addEventListener('click', function (e) {
-      if (e.target === eventLightbox) closeAffiche();
-    });
+    eventLightbox.addEventListener('click', function (e) { if (e.target === eventLightbox) closeAffiche(); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && eventLightbox.classList.contains('open')) closeAffiche();
     });
   }
-});
+}});

@@ -120,32 +120,51 @@
 .hero-cta:hover { background: transparent; color: var(--navy); }
 
 
-/* ===== À LA UNE — Affiche seule (accueil) ===== */
-.une-affiche-index {
-  display: inline-block;
-  cursor: pointer;
-  position: relative;
-  max-width: clamp(200px, 22vw, 340px);
-  overflow: hidden;
-  background: rgba(2, 0, 71, 0.04);
-  border: 1px solid rgba(2, 0, 71, 0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+/* ===== BADGE PROCHAIN CONCERT (hero) ===== */
+.hero-next-concert {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 235, 184, 0.25);
+  padding: 0.6rem 1.2rem;
+  margin-bottom: 2rem;
+  transition: border-color 0.25s, background 0.25s;
+  animation: fadeUp 0.9s 0.38s ease both;
 }
-.une-affiche-index:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(2, 0, 71, 0.1);
+.hero-next-concert:hover {
+  border-color: rgba(255, 235, 184, 0.6);
+  background: rgba(255, 235, 184, 0.05);
 }
-.une-affiche-index img {
-  width: 100%;
-  display: block;
-  transition: transform 0.4s ease;
+.hero-next-label {
+  font-family: var(--font-caps);
+  font-size: var(--text-xs);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.6;
+  white-space: nowrap;
 }
-.une-affiche-index:hover img {
-  transform: scale(1.03);
+.hero-next-info {
+  font-family: var(--font-caps);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  opacity: 0.9;
+}
+.hero-next-arrow {
+  color: var(--gold);
+  opacity: 0.5;
+  font-size: 0.9rem;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.hero-next-concert:hover .hero-next-arrow {
+  transform: translateX(3px);
+  opacity: 1;
 }
 
-@media (max-width: 640px) {
-  .une-affiche-index { max-width: clamp(160px, 50vw, 240px); }
+@media (max-width: 480px) {
+  .hero-next-concert { flex-direction: column; gap: 0.3rem; text-align: center; }
+  .hero-next-arrow { display: none; }
 }
 
 
