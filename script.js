@@ -33,9 +33,8 @@
   var labels = ['Accueil','Historique','Agenda','Galerie','Contact & Partenaires'];
 
   var navLinks = nav.map(function (href, i) {
-    return (i === 1 ? '<div class="nav-divider"></div>' : '')
-      + '<a class="nav-link" href="' + href + '">' + labels[i] + '</a>';
-  }).join('');
+    return '<a class="nav-link" href="' + href + '">' + labels[i] + '</a>';
+  }).join('<div class="nav-divider"></div>');
 
   var headerHTML = '<header><div class="header-inner"><div class="header-left">'
     + '<a class="site-title" href="index.html"><img class="logo-header" src="cle/Logo Harmonie Municipale NSG 2.png" alt="">'
@@ -115,9 +114,106 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
 
+
+
   /* =========================================
-     CARROUSEL
+     À LA UNE — Page d'accueil (affiche seule)
      ========================================= */
+  (function () {
+    var section = document.getElementById('a-la-une-index');
+    if (!section) return;
+    var affiche = (typeof AFFICHE_UNE !== 'undefined') ? AFFICHE_UNE.trim() : '';
+    if (!affiche) { section.parentNode.removeChild(section); return; }
+
+    section.innerHTML = '<p class="section-tag">Prochainement</p>'
+      + '<h2>À la une</h2>'
+      + '<div class="section-line"></div>'
+      + '<div class="une-affiche-index" id="uneAfficheIndex" role="button" tabindex="0" aria-label="Agrandir l\'affiche">'
+      + '<img src="' + affiche + '" alt="Affiche du prochain concert">'
+      + '</div>';
+
+    var lb    = document.getElementById('indexLightbox');
+    var lbImg = document.getElementById('indexLightboxImg');
+    var lbClose = document.getElementById('indexLightboxClose');
+    var wrap  = document.getElementById('uneAfficheIndex');
+
+    function open() { lbImg.src = affiche; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+
+    wrap.addEventListener('click', open);
+    wrap.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') open(); });
+    lbClose.addEventListener('click', close);
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+  })();
+
+
+
+  (function () {
+    var section = document.getElementById('a-la-une');
+    if (!section) return;
+
+    /* AFFICHE_UNE et DATE_UNE sont définis dans agenda.html */
+    var affiche = (typeof AFFICHE_UNE !== 'undefined') ? AFFICHE_UNE.trim() : '';
+    var date    = (typeof DATE_UNE   !== 'undefined') ? DATE_UNE    : '';
+    var titre   = (typeof TITRE_UNE  !== 'undefined') ? TITRE_UNE   : 'Prochain concert';
+
+    if (!affiche && !date) {
+      /* Rien à afficher — on supprime la section */
+      section.parentNode.removeChild(section);
+      return;
+    }
+
+    var html = '<p class="section-tag">Prochainement</p>'
+             + '<h2>À la une</h2>'
+             + '<div class="section-line"></div>';
+
+    if (affiche) {
+      /* Mode affiche */
+      html += '<div class="une-wrapper">'
+            +   '<div class="une-affiche-wrap" id="uneAfficheWrap" role="button" tabindex="0" aria-label="Agrandir l\'affiche">'
+            +     '<img src="' + affiche + '" alt="Affiche du prochain concert">'
+            +     '<span class="une-affiche-zoom">Agrandir</span>'
+            +   '</div>'
+            +   '<div class="une-info">'
+            +     '<p class="section-tag">Prochain rendez-vous</p>'
+            +     '<h2>' + titre + '</h2>'
+            +     (date ? '<span class="une-date-badge">' + date + '</span>' : '')
+            +   '</div>'
+            + '</div>';
+    } else {
+      /* Mode date seule — pas d'affiche */
+      html += '<div class="une-date-only">'
+            +   '<p class="une-date-large">' + titre + '</p>'
+            +   (date ? '<span class="une-date-badge">' + date + '</span>' : '')
+            + '</div>';
+    }
+
+    section.innerHTML = html;
+
+    /* Ouvrir l'affiche dans la lightbox galerie si présente */
+    var wrap = document.getElementById('uneAfficheWrap');
+    var lb   = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightboxImg');
+    if (wrap && lb && lbImg) {
+      function openUneAffiche() {
+        lbImg.src = affiche;
+        lbImg.alt = 'Affiche du prochain concert';
+        document.getElementById('lightboxPrev').style.display = 'none';
+        document.getElementById('lightboxNext').style.display = 'none';
+        document.getElementById('lightboxCounter').style.display = 'none';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      wrap.addEventListener('click', openUneAffiche);
+      wrap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') openUneAffiche();
+      });
+    }
+  })();
+
+
+
   function initCarousel(trackId, prevId, nextId) {
     var track   = document.getElementById(trackId);
     var btnPrev = document.getElementById(prevId);
@@ -308,11 +404,42 @@ window.addEventListener('DOMContentLoaded', function () {
       if (!prenom || !email || !sujet || !msg) { alert('Merci de remplir tous les champs.'); return; }
       var nomComplet = nom ? prenom + ' ' + nom : prenom;
       var body = 'De : ' + nomComplet + ' (' + email + ')\n\n' + msg;
-      window.location.href = 'mailto:maximussdenuits@gmail.com'
+      window.location.href = 'mailto:harmonie.nuits@yahoo.fr'
         + '?subject=' + encodeURIComponent(sujet)
         + '&body=' + encodeURIComponent(body);
     };
   }
+
+  /* =========================================
+     AFFICHES PROGRAMMES — ouverture en lightbox
+     ========================================= */
+  var programmeImgWraps = document.querySelectorAll('.programme-img-wrap');
+  if (programmeImgWraps.length && lightbox) {
+    programmeImgWraps.forEach(function (wrap) {
+      var img = wrap.querySelector('img');
+      if (!img) return;
+      wrap.addEventListener('click', function () {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        document.getElementById('lightboxPrev').style.display = 'none';
+        document.getElementById('lightboxNext').style.display = 'none';
+        document.getElementById('lightboxCounter').style.display = 'none';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function restoreLightboxNav() {
+      document.getElementById('lightboxPrev').style.display = '';
+      document.getElementById('lightboxNext').style.display = '';
+      document.getElementById('lightboxCounter').style.display = '';
+    }
+    document.getElementById('lightboxClose').addEventListener('click', restoreLightboxNav);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) restoreLightboxNav();
+    });
+  }
+
 
   /* =========================================
    VIGNETTES AFFICHE + LIGHTBOX ÉVÉNEMENT

@@ -120,7 +120,35 @@
 .hero-cta:hover { background: transparent; color: var(--navy); }
 
 
-/* ===== LOGO SECTION "QUI SOMMES-NOUS" ===== */
+/* ===== À LA UNE — Affiche seule (accueil) ===== */
+.une-affiche-index {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  max-width: clamp(200px, 22vw, 340px);
+  overflow: hidden;
+  background: rgba(2, 0, 71, 0.04);
+  border: 1px solid rgba(2, 0, 71, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.une-affiche-index:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(2, 0, 71, 0.1);
+}
+.une-affiche-index img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.une-affiche-index:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 640px) {
+  .une-affiche-index { max-width: clamp(160px, 50vw, 240px); }
+}
+
+
 .logo-right-text {
   position: absolute;
   width: clamp(200px, 28vw, 520px);
