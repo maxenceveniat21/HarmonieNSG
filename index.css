@@ -231,6 +231,10 @@
   overflow: hidden;
 }
 
+.president-photo img {
+  width: 180px;
+}
+
 .president-name {
   font-family: var(--font-serif);
   font-size: 1.1rem; font-weight: 600;
@@ -240,7 +244,7 @@
 .president-role {
   font-family: var(--font-caps);
   font-size: var(--text-xs); font-weight: 400;
-  letter-spacing: 0.25em; text-transform: uppercase;
+  letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--gold); opacity: 0.8;
   text-align: center; margin-top: 0.3rem;
 }
@@ -258,7 +262,7 @@
 .president-tag {
   font-family: var(--font-caps);
   font-size: var(--text-xs); font-weight: 400;
-  letter-spacing: 0.3em; text-transform: uppercase;
+  letter-spacing: 0.25em; text-transform: uppercase;
   color: var(--gold); opacity: 0.75;
   margin-bottom: 1.5rem; display: block;
 }
