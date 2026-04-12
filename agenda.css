@@ -269,3 +269,118 @@
   .carousel-track .event-card { flex: 0 0 100%; }
   #mapConcertsLeaflet, #mapAnimsLeaflet { height: 220px; }
 }
+
+/* ===== À LA UNE ===== */
+#a-la-une { padding-bottom: 0; }
+#a-la-une:empty { display: none; }
+
+.une-wrapper {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.une-affiche-wrap {
+  flex-shrink: 0;
+  width: clamp(220px, 22vw, 360px);
+  cursor: zoom-in;
+  position: relative;
+}
+.une-affiche-wrap img {
+  width: 100%;
+  display: block;
+  border: 1px solid rgba(2, 0, 71, 0.12);
+  box-shadow: 6px 6px 30px rgba(2, 0, 71, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.une-affiche-wrap:hover img {
+  transform: scale(1.015);
+  box-shadow: 8px 8px 40px rgba(2, 0, 71, 0.16);
+}
+.une-affiche-zoom {
+  position: absolute;
+  bottom: 0.8rem; right: 0.8rem;
+  background: rgba(2, 0, 71, 0.7);
+  color: var(--gold);
+  font-family: var(--font-caps);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+.une-affiche-wrap:hover .une-affiche-zoom { opacity: 1; }
+
+.une-info { flex: 1; padding-top: 0.5rem; }
+.une-info .section-tag { margin-bottom: 0.6rem; }
+.une-info h2 { margin-bottom: 0.5rem; }
+.une-date-badge {
+  display: inline-block;
+  font-family: var(--font-caps);
+  font-size: var(--text-xs);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: rgba(2, 0, 71, 0.06);
+  border: 1px solid rgba(2, 0, 71, 0.12);
+  padding: 0.5rem 1.2rem;
+  margin-top: 1rem;
+}
+
+.une-date-only {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 680px;
+}
+.une-date-only .une-date-large {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+/* ===== LIGHTBOX AFFICHE (agenda) ===== */
+.event-lightbox {
+  position: fixed; inset: 0; z-index: 3000;
+  background: rgba(2, 0, 47, 0.96);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.event-lightbox.open { opacity: 1; pointer-events: all; }
+.event-lightbox img {
+  max-width: 90vw; max-height: 90vh;
+  object-fit: contain; display: block;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+}
+.event-lightbox-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: none; border: 1px solid rgba(255, 235, 184, 0.3);
+  color: var(--gold); font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.6; transition: opacity 0.2s, border-color 0.2s;
+}
+.event-lightbox-close:hover { opacity: 1; border-color: var(--gold); }
+
+/* ===== RESPONSIVE À LA UNE ===== */
+@media (max-width: 1100px) {
+  .une-wrapper { gap: 2.5rem; }
+  .une-affiche-wrap { width: clamp(200px, 25vw, 300px); }
+}
+@media (max-width: 860px) {
+  .une-wrapper { flex-direction: column; gap: 2rem; }
+  .une-affiche-wrap { width: clamp(180px, 55vw, 280px); }
+}
+@media (max-width: 480px) {
+  .une-affiche-wrap { width: 100%; max-width: 260px; }
+  .une-date-badge { font-size: 0.75rem; padding: 0.4rem 0.9rem; }
+}
+@media (max-width: 380px) {
+  .une-affiche-wrap { max-width: 220px; }
+  .event-lightbox-close { top: 0.8rem; right: 0.8rem; width: 36px; height: 36px; }
+}

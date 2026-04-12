@@ -347,3 +347,17 @@
   .president-name { font-size: 1rem; }
   .president-quote-mark { font-size: 5rem; }
 }
+
+/* ── Très petit mobile 380px ── */
+@media (max-width: 380px) {
+  .hero { padding: 2rem 0.8rem; }
+  .hero h1 { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.1em; }
+  .hero-next-concert { padding: 0.5rem 0.8rem; gap: 0.2rem; }
+  .hero-cta { padding: 0.75rem 1.4rem; font-size: 0.75rem; }
+  .stat { padding: 1.2rem 0.6rem; }
+  .stat-number { font-size: 1.6rem; }
+  .president-section { padding: 2.5rem 0.8rem; }
+  .president-photo { width: 90px; height: 90px; }
+  .president-quote { font-size: 1rem; }
+}

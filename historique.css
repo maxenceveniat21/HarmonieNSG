@@ -142,3 +142,14 @@
   .timeline-item { padding-left: 1.2rem; }
   .timeline-photo-long { max-height: 200px; }
 }
+
+/* ── Mobile 640px ── */
+@media (max-width: 640px) {
+  .timeline { padding: 1rem 0; }
+  .timeline-item { padding-left: 1.8rem; padding-bottom: 2.8rem; }
+  .timeline-title { font-size: 1.3rem; }
+  .timeline-photo { max-width: 100%; }
+  .timeline-photo-long { max-height: 280px; }
+  .timeline-photo-small-side-v2 { max-height: 280px; }
+  .photo-row { flex-direction: column; gap: 0.8rem; }
+}

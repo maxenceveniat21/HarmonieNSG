@@ -362,6 +362,11 @@ footer { background: var(--navy); padding: 2.2rem 2.5rem; }
 }
 .footer-social:hover { opacity: 1; border-color: var(--gold); }
 
+@media (max-width: 1440px) {
+  .footer-inner { gap: 2rem 2.5rem; }
+  .footer-title { font-size: 1.1rem; }
+  .footer-info { font-size: 1.05rem; }
+}
 @media (max-width: 1100px) {
   .footer-inner { grid-template-columns: 1.4fr 1fr 1fr; }
   .footer-inner > *:last-child { grid-column: 1; grid-row: 2; }
@@ -512,4 +517,32 @@ footer { background: var(--navy); padding: 2.2rem 2.5rem; }
   .site-title .name { font-size: 0.9rem; }
   .logo-header { height: 44px; }
   .header-inner { height: 56px; }
+}
+
+/* =============================================
+   TRÈS GRANDS ÉCRANS (2560px+, 4K)
+   Empêche les textes et sections de devenir
+   démesurés sans toucher au rendu 1920px
+   ============================================= */
+@media (min-width: 1921px) {
+  :root {
+    --text-base: 1.35rem;
+    --text-sm:   1.15rem;
+    --text-xs:   0.95rem;
+    --section-padding: 6rem 4rem;
+    --section-max: 1800px;
+  }
+  .header-inner { max-width: 2400px; }
+  .footer-inner { max-width: 1800px; }
+  h2 { font-size: clamp(2rem, 2.5vw, 3.2rem); }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --section-max: 2200px;
+    --section-padding: 7rem 5rem;
+  }
+  .header-inner { max-width: 2800px; }
+  .footer-inner { max-width: 2200px; }
+  h2 { font-size: clamp(2.2rem, 2vw, 3.5rem); }
 }
