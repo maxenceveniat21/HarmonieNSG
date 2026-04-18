@@ -116,8 +116,8 @@
 
 /* ===== CARROUSEL ===== */
 .carousel-wrapper { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; }
-.carousel-track-wrapper { flex: 1; overflow: hidden; }
-.carousel-track { display: flex; gap: 1.5rem; transition: transform 0.4s ease; }
+.carousel-track-wrapper { flex: 1; overflow: hidden; min-width: 0; }
+.carousel-track { display: flex; gap: 1.5rem; transition: transform 0.4s ease; will-change: transform; }
 .carousel-track .event-card { flex: 0 0 calc((100% - 3rem) / 3); min-width: 0; }
 
 .carousel-arrow {
@@ -253,6 +253,7 @@
 /* ── Mobile 480px ── */
 @media (max-width: 480px) {
   .carousel-track .event-card { flex: 0 0 100%; }
+  .carousel-track { gap: 0; }
   .carousel-wrapper { gap: 0.3rem; }
   .carousel-arrow { width: 36px; height: 36px; }
   .event-card { padding: 1.2rem; }
@@ -261,12 +262,12 @@
   #mapConcertsLeaflet, #mapAnimsLeaflet { height: 260px; }
   .map-itinerary { flex-direction: column; padding: 0.8rem 1rem; }
   .map-input { min-width: 0; }
-  .carousel-track { gap: 1rem; }
 }
 
 /* ── Très petit mobile ── */
 @media (max-width: 380px) {
   .carousel-track .event-card { flex: 0 0 100%; }
+  .carousel-track { gap: 0; }
   #mapConcertsLeaflet, #mapAnimsLeaflet { height: 220px; }
 }
 

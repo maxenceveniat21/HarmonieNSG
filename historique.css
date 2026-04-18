@@ -89,6 +89,8 @@
   .timeline-year-date { left: -17%; }
   .timeline-year-last { left: -26%; }
   .timeline-photo { max-width: 380px; }
+  .timeline-photo-small-side { height: auto; max-height: none; object-fit: contain; }
+  .timeline-photo-small-side-v2 { height: auto; max-height: 50vh; }
 }
 
 /* ── Tablette 860px ── */
@@ -152,4 +154,24 @@
   .timeline-photo-long { max-height: 280px; }
   .timeline-photo-small-side-v2 { max-height: 280px; }
   .photo-row { flex-direction: column; gap: 0.8rem; }
+  /* Forcer les années en flux sur mobile */
+  .timeline-year,
+  .timeline-year-date,
+  .timeline-year-last {
+    position: static;
+    left: auto;
+    margin-bottom: 0.4rem;
+    display: block;
+    font-size: 1rem;
+  }
+  .timeline-photo-small-side {
+    position: static;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
 }

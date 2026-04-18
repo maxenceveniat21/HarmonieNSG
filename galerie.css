@@ -284,7 +284,7 @@
   .galerie-nav { gap: 1rem; }
   .galerie-nav-link { font-size: 0.75rem; letter-spacing: 0.1em; padding: 0.9rem 0; }
 
-  .video-embed-wrap-short { width: 75%; }
+  .video-embed-wrap-short { width: 85%; margin: 0 auto; }
   .programme-img-wrap { max-width: 180px; }
 }
 

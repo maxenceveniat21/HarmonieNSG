@@ -103,16 +103,35 @@ window.addEventListener('DOMContentLoaded', function () {
     var btnNext = document.getElementById(nextId);
     if (!track || !btnPrev || !btnNext) return;
     var current = 0;
+
     function getVisible() {
       var w = track.parentElement.offsetWidth;
       return w < 600 ? 1 : w < 960 ? 2 : 3;
     }
+
+    function getCardWidth() {
+      var card = track.children[0];
+      if (!card) return 0;
+      // Use the actual rendered offset: second card left - first card left
+      if (track.children.length > 1) {
+        var off1 = track.children[0].offsetLeft;
+        var off2 = track.children[1].offsetLeft;
+        if (off2 > off1) return off2 - off1;
+      }
+      // Fallback: card width + gap (parse from computed style)
+      var style = window.getComputedStyle(track);
+      var gap = parseFloat(style.gap || style.columnGap || '0') || 0;
+      return card.offsetWidth + gap;
+    }
+
     function update() {
       var visible = getVisible();
-      track.style.transform = 'translateX(-' + (current * track.parentElement.offsetWidth / visible) + 'px)';
+      var cardW = getCardWidth();
+      track.style.transform = 'translateX(-' + (current * cardW) + 'px)';
       btnPrev.classList.toggle('carousel-arrow--disabled', current === 0);
       btnNext.classList.toggle('carousel-arrow--disabled', current >= track.children.length - visible);
     }
+
     btnNext.addEventListener('click', function () { if (current < track.children.length - getVisible()) { current++; update(); } });
     btnPrev.addEventListener('click', function () { if (current > 0) { current--; update(); } });
     window.addEventListener('resize', function () { current = 0; update(); });
@@ -251,6 +270,14 @@ window.addEventListener('DOMContentLoaded', function () {
       if (e.key === 'ArrowLeft')  goTo(currentIndex - 1);
       if (e.key === 'Escape')     closeLightbox();
     });
+
+    // Touch swipe support for gallery lightbox
+    var lbTouchStartX = 0;
+    lightbox.addEventListener('touchstart', function (e) { lbTouchStartX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - lbTouchStartX;
+      if (Math.abs(dx) > 50) { if (dx < 0) goTo(currentIndex + 1); else goTo(currentIndex - 1); }
+    }, { passive: true });
   }
 
 
@@ -356,5 +383,17 @@ window.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && eventLightbox.classList.contains('open')) closeAffiche();
     });
+
+    // Touch swipe to close on mobile
+    var evTouchStartX = 0, evTouchStartY = 0;
+    eventLightbox.addEventListener('touchstart', function (e) {
+      evTouchStartX = e.touches[0].clientX;
+      evTouchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    eventLightbox.addEventListener('touchend', function (e) {
+      var dx = Math.abs(e.changedTouches[0].clientX - evTouchStartX);
+      var dy = Math.abs(e.changedTouches[0].clientY - evTouchStartY);
+      if (dy > 60 && dy > dx) closeAffiche();
+    }, { passive: true });
   }
 });
