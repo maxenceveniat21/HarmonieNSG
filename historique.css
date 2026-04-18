@@ -114,14 +114,16 @@
   /* Toutes les images prennent la pleine largeur */
   .timeline-photo { width: 100%; max-width: 100%; margin-left: 0; margin-top: 1rem; }
   .timeline-photo-long { height: auto; max-height: 320px; width: 100%; object-fit: cover; }
+  /* Sur mobile, les portraits/blason ne sont plus contraints côte à côte :
+     on laisse leur hauteur naturelle pour éviter tout recadrage */
   .timeline-photo-small-side {
-    position: static; height: auto; max-height: 220px;
-    object-fit: cover; width: 100%; max-width: 100%;
+    position: static; height: auto; max-height: none;
+    object-fit: contain; width: 100%; max-width: 260px;
     margin-top: 1rem; margin-left: 0;
   }
   .timeline-photo-small-side-v2 {
-    height: auto; max-height: 300px;
-    width: 100%; max-width: 100%; object-fit: cover;
+    height: auto; max-height: none;
+    width: 100%; max-width: 280px; object-fit: contain;
   }
 
   .timeline-item { padding-left: 2rem; }
@@ -135,8 +137,8 @@
 
   .timeline-photo { max-width: 100%; width: 100%; margin-left: 0; }
   .timeline-photo-long { max-height: 260px; }
-  .timeline-photo-small-side { max-height: 200px; }
-  .timeline-photo-small-side-v2 { max-height: 260px; }
+  .timeline-photo-small-side { max-width: 220px; }
+  .timeline-photo-small-side-v2 { max-width: 240px; }
 }
 
 /* ── Mobile 480px ── */
@@ -145,8 +147,8 @@
   .timeline-title { font-size: 1.25rem; }
   .timeline-text { font-size: var(--text-sm); }
   .timeline-photo-long { max-height: 220px; }
-  .timeline-photo-small-side { max-height: 170px; }
-  .timeline-photo-small-side-v2 { max-height: 220px; }
+  .timeline-photo-small-side { max-width: 180px; }
+  .timeline-photo-small-side-v2 { max-width: 200px; }
   .timeline { padding: 1.5rem 0; }
 }
 
@@ -154,6 +156,6 @@
 @media (max-width: 380px) {
   .timeline-item { padding-left: 1.2rem; }
   .timeline-photo-long { max-height: 180px; }
-  .timeline-photo-small-side { max-height: 140px; }
-  .timeline-photo-small-side-v2 { max-height: 180px; }
+  .timeline-photo-small-side { max-width: 150px; }
+  .timeline-photo-small-side-v2 { max-width: 160px; }
 }

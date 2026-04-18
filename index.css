@@ -349,9 +349,16 @@
   .hero-deco-top-left,
   .hero-deco-top-right { display: none; }
 
-  /* Le logo bottom-left : on le sort de position:absolute et on l'affiche sous les boutons */
+  /* On passe le hero en colonne pour contrôler l'ordre des éléments */
+  .hero { flex-direction: column; }
+
+  /* Le hero-content en premier */
+  .hero-content { order: 1; }
+
+  /* Le logo bottom-left sort de l'absolute et s'affiche SOUS les boutons */
   .hero-deco-bottom-left {
     position: static;
+    order: 2;
     display: block;
     width: clamp(80px, 30vw, 140px);
     margin: 1.5rem auto 0;
