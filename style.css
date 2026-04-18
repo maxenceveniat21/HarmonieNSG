@@ -517,6 +517,14 @@ footer { background: var(--navy); padding: 2.2rem 2.5rem; }
   .site-title .name { font-size: 0.9rem; }
   .logo-header { height: 44px; }
   .header-inner { height: 56px; }
+  /* Fix 16 : letter-spacing fort sur très petits écrans */
+  .page-hero-tag { letter-spacing: 0.15em; word-break: break-word; }
+}
+
+/* Fix 17 : flèches lightbox masquées sur mobile — le swipe touch suffit */
+@media (max-width: 640px) {
+  .lightbox-prev,
+  .lightbox-next { display: none; }
 }
 
 /* =============================================

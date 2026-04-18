@@ -112,13 +112,11 @@ window.addEventListener('DOMContentLoaded', function () {
     function getCardWidth() {
       var card = track.children[0];
       if (!card) return 0;
-      // Use the actual rendered offset: second card left - first card left
       if (track.children.length > 1) {
         var off1 = track.children[0].offsetLeft;
         var off2 = track.children[1].offsetLeft;
         if (off2 > off1) return off2 - off1;
       }
-      // Fallback: card width + gap (parse from computed style)
       var style = window.getComputedStyle(track);
       var gap = parseFloat(style.gap || style.columnGap || '0') || 0;
       return card.offsetWidth + gap;
@@ -135,6 +133,22 @@ window.addEventListener('DOMContentLoaded', function () {
     btnNext.addEventListener('click', function () { if (current < track.children.length - getVisible()) { current++; update(); } });
     btnPrev.addEventListener('click', function () { if (current > 0) { current--; update(); } });
     window.addEventListener('resize', function () { current = 0; update(); });
+
+    // Swipe touch sur le carrousel
+    var touchStartX = 0, touchStartY = 0;
+    track.parentElement.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    track.parentElement.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0 && current < track.children.length - getVisible()) { current++; update(); }
+        else if (dx > 0 && current > 0) { current--; update(); }
+      }
+    }, { passive: true });
+
     update();
   }
 

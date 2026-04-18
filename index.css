@@ -4,7 +4,7 @@
 
 /* ===== HERO ===== */
 .hero {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px); /* header desktop = 80px */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,6 +180,21 @@
   right: 6%; top: 102%;
 }
 
+/* Dès 1100px le logo peut chevaucher le contenu suivant — on le sort du flux */
+@media (max-width: 1100px) {
+  .logo-right-text {
+    position: static;
+    display: block;
+    width: clamp(90px, 12vw, 200px);
+    margin: 1.5rem auto 0;
+  }
+}
+
+/* Sur mobile, l'image notes est trop petite pour être utile — on la masque */
+@media (max-width: 640px) {
+  .logo-right-text { display: none; }
+}
+
 
 /* ===== STATS ===== */
 .stats {
@@ -289,7 +304,7 @@
 
 /* ── 1440px ── */
 @media (max-width: 1440px) {
-  .hero { min-height: calc(100vh - 70px); padding: 4rem 2rem 3rem; }
+  .hero { min-height: calc(100vh - 80px); padding: 4rem 2rem 3rem; }
   .hero h1 { font-size: clamp(2.2rem, 5vw, 5rem); }
   .president-section { padding: 5rem 2rem; }
   .president-inner { gap: 3.5rem; }
@@ -301,12 +316,11 @@
   .hero-deco-bottom-right { width: clamp(120px, 20vw, 320px); }
   .hero-deco-top-right    { width: clamp(70px, 9vw, 150px); }
   .president-inner { gap: 2.5rem; }
-  .logo-right-text { width: clamp(90px, 12vw, 200px); }
 }
 
 /* ── Tablette 860px ── */
 @media (max-width: 860px) {
-  .hero { padding: 3.5rem 1.5rem 3rem; min-height: 70vh; }
+  .hero { padding: 3.5rem 1.5rem 3rem; min-height: calc(100vh - 70px); }
   .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
   .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.15em; }
   .hero-deco-bottom-right { display: none; }
@@ -316,12 +330,6 @@
   .hero-cta { padding: 0.85rem 2rem; }
 
   /* Sur tablette/mobile, le logo décoratif reste en static sous le contenu */
-  .logo-right-text {
-    position: static;
-    display: block;
-    width: clamp(80px, 25vw, 160px);
-    margin: 1.5rem auto 0;
-  }
 
   .stats { grid-template-columns: repeat(3, 1fr); }
   .stat { padding: 2rem 1rem; }
@@ -337,21 +345,34 @@
 
 /* ── Mobile strict : masquer les décos qui chevauchent les boutons ── */
 @media (max-width: 640px) {
+  /* top-left (chef dessin) et top-right (notes) masqués — ils chevauchent */
   .hero-deco-top-left,
-  .hero-deco-bottom-left { display: none; }
+  .hero-deco-top-right { display: none; }
+
+  /* Le logo bottom-left : on le sort de position:absolute et on l'affiche sous les boutons */
+  .hero-deco-bottom-left {
+    position: static;
+    display: block;
+    width: clamp(80px, 30vw, 140px);
+    margin: 1.5rem auto 0;
+    opacity: 0.75;
+  }
 }
 
 /* ── Mobile 640px ── */
 @media (max-width: 640px) {
   .hero { padding: 2.5rem 1rem 2.5rem; min-height: 80vh; }
   .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
-  .hero-deco-top-right { display: none; }
-  .hero-deco-top-left  { display: none; }
-  .hero-deco-bottom-left { display: none; }
   .hero-cta-column { flex-direction: column; align-items: center; gap: 0.5rem; }
-  .hero-cta { padding: 0.8rem 1.8rem; margin: 0; }
-  /* Le 4e bouton Contact rejoint la colonne sur mobile */
-  .hero-content > .hero-cta { margin-top: 0; }
+  .hero-cta { padding: 0.8rem 1.8rem; margin: 0; width: 100%; max-width: 280px; text-align: center; }
+  /* Le 4e bouton Contact : même largeur et espacement que les 3 autres */
+  .hero-content > .hero-cta {
+    margin-top: 0.5rem;
+    margin-left: 0;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
 
   .stats { grid-template-columns: 1fr; }
   .stat { padding: 1.5rem 1rem; }

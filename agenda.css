@@ -211,7 +211,8 @@
   color: var(--white); background: var(--navy);
   border: 1.5px solid var(--navy);
   padding: 0.6rem 1.4rem;
-  cursor: pointer; white-space: nowrap;
+  cursor: pointer;
+  white-space: nowrap; /* préservé sur grands écrans */
   transition: background 0.25s, color 0.25s;
 }
 .map-itinerary-btn:hover { background: transparent; color: var(--navy); }
@@ -247,7 +248,8 @@
 
 /* ── Mobile 640px ── */
 @media (max-width: 640px) {
-  .carousel-track .event-card { flex: 0 0 calc((100% - 1.5rem) / 2); }
+  .carousel-track .event-card { flex: 0 0 100%; } /* 1 seule carte visible — évite l'écrasement avec vignette */
+  .carousel-track { gap: 0; }
 }
 
 /* ── Mobile 480px ── */
@@ -262,6 +264,7 @@
   #mapConcertsLeaflet, #mapAnimsLeaflet { height: 260px; }
   .map-itinerary { flex-direction: column; padding: 0.8rem 1rem; }
   .map-input { min-width: 0; }
+  .map-itinerary-btn { white-space: normal; width: 100%; text-align: center; }
 }
 
 /* ── Très petit mobile ── */

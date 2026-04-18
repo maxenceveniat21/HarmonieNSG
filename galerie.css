@@ -39,6 +39,20 @@
 
 .section-divider { max-width: var(--section-max); margin: 0 auto; height: 1px; background: rgba(2, 0, 71, 0.08); }
 
+/* Compensation header sticky + nav sticky pour les ancres internes */
+section[id] {
+  scroll-margin-top: 130px; /* header 80px + nav galerie ~45px + marge */
+}
+@media (max-width: 860px) {
+  section[id] { scroll-margin-top: 115px; } /* header 70px + nav ~40px */
+}
+@media (max-width: 480px) {
+  section[id] { scroll-margin-top: 105px; } /* header 60px + nav ~40px */
+}
+@media (max-width: 380px) {
+  section[id] { scroll-margin-top: 100px; } /* header 56px + nav ~40px */
+}
+
 
 /* ===== PHOTOS ===== */
 .photo-filters { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
