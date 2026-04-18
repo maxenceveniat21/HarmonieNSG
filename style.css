@@ -467,6 +467,14 @@ footer { background: var(--navy); padding: 2.2rem 2.5rem; }
   h2 { font-size: clamp(1.4rem, 2.5vw, 2.2rem); }
 }
 
+/* ── Intermédiaire 1024px — évite l'écrasement header ── */
+@media (max-width: 1024px) {
+  .site-title .name  { font-size: 1.2rem; }
+  .site-title .label { font-size: 0.78rem; letter-spacing: 0.15em; }
+  .logo-header       { height: 68px; }
+  .header-inner      { height: 76px; padding: 0 1.8rem; }
+}
+
 /* ── Tablette 768px ── */
 @media (max-width: 860px) {
   :root {
@@ -527,30 +535,43 @@ footer { background: var(--navy); padding: 2.2rem 2.5rem; }
   .lightbox-next { display: none; }
 }
 
+/* Grands écrans : voir les overrides à la fin du fichier */
+
 /* =============================================
-   TRÈS GRANDS ÉCRANS (2560px+, 4K)
-   Empêche les textes et sections de devenir
-   démesurés sans toucher au rendu 1920px
+   OVERRIDE TRÈS GRANDS ÉCRANS — version améliorée
    ============================================= */
 @media (min-width: 1921px) {
   :root {
-    --text-base: 1.35rem;
-    --text-sm:   1.15rem;
-    --text-xs:   0.95rem;
-    --section-padding: 6rem 4rem;
-    --section-max: 1800px;
+    --text-base: 1.6rem;
+    --text-sm:   1.35rem;
+    --text-xs:   1.1rem;
+    --section-padding: 8rem 5rem;
+    --section-max: 1900px;
   }
-  .header-inner { max-width: 2400px; }
-  .footer-inner { max-width: 1800px; }
-  h2 { font-size: clamp(2rem, 2.5vw, 3.2rem); }
+  .header-inner { max-width: 2400px !important; height: 100px !important; }
+  .logo-header  { height: 100px !important; }
+  .site-title .name  { font-size: 1.9rem !important; }
+  .site-title .label { font-size: 1.05rem !important; display: block !important; }
+  .footer-inner { max-width: 1900px; }
+  h2 { font-size: clamp(2.2rem, 2.8vw, 3.8rem) !important; }
+  h3 { font-size: 1.8rem; }
 }
 
 @media (min-width: 2560px) {
   :root {
-    --section-max: 2200px;
-    --section-padding: 7rem 5rem;
+    --text-base: 2rem;
+    --text-sm:   1.7rem;
+    --text-xs:   1.4rem;
+    --section-max: 2400px;
+    --section-padding: 10rem 7rem;
   }
-  .header-inner { max-width: 2800px; }
-  .footer-inner { max-width: 2200px; }
-  h2 { font-size: clamp(2.2rem, 2vw, 3.5rem); }
+  .header-inner { max-width: 3000px !important; height: 120px !important; }
+  .logo-header  { height: 120px !important; }
+  .site-title .name  { font-size: 2.4rem !important; }
+  .site-title .label { font-size: 1.3rem !important; display: block !important; }
+  .footer-inner { max-width: 2400px; }
+  h2 { font-size: clamp(2.8rem, 2.5vw, 5rem) !important; }
+  h3 { font-size: 2.2rem; }
+  .menu-toggle { padding: 16px 20px; }
+  .menu-toggle span { width: 32px; height: 2px; }
 }

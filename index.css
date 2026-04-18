@@ -320,13 +320,23 @@
 
 /* ── Tablette 860px ── */
 @media (max-width: 860px) {
-  .hero { padding: 3.5rem 1.5rem 3rem; min-height: calc(100vh - 70px); }
+  .hero { padding: 3.5rem 1.5rem 3rem; min-height: calc(100vh - 70px); flex-direction: column; }
   .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
   .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.15em; }
   .hero-deco-bottom-right { display: none; }
-  .hero-deco-bottom-left  { display: none; }
+  /* Sur tablette, le logo sort de l'absolute et s'affiche sous le contenu */
+  .hero-deco-bottom-left {
+    position: static;
+    order: 2;
+    display: block;
+    width: clamp(90px, 14vw, 160px);
+    margin: 1.5rem auto 0;
+    opacity: 0.75;
+  }
+  .hero-content { order: 1; }
+  /* La clé de sol : masquée sur tablette, elle est trop petite pour apporter quelque chose */
+  .hero-deco-top-left  { display: none; }
   .hero-deco-top-right { right: 2%; top: 2%; width: clamp(60px, 10vw, 120px); }
-  .hero-deco-top-left  { width: clamp(100px, 18vw, 220px); }
   .hero-cta { padding: 0.85rem 2rem; }
 
   /* Sur tablette/mobile, le logo décoratif reste en static sous le contenu */
@@ -343,27 +353,11 @@
   .president-quote { font-size: clamp(1rem, 2.5vw, 1.4rem); }
 }
 
-/* ── Mobile strict : masquer les décos qui chevauchent les boutons ── */
+/* ── Mobile strict 640px : masquer top-right (notes) ── */
 @media (max-width: 640px) {
-  /* top-left (chef dessin) et top-right (notes) masqués — ils chevauchent */
-  .hero-deco-top-left,
   .hero-deco-top-right { display: none; }
-
-  /* On passe le hero en colonne pour contrôler l'ordre des éléments */
-  .hero { flex-direction: column; }
-
-  /* Le hero-content en premier */
-  .hero-content { order: 1; }
-
-  /* Le logo bottom-left sort de l'absolute et s'affiche SOUS les boutons */
-  .hero-deco-bottom-left {
-    position: static;
-    order: 2;
-    display: block;
-    width: clamp(80px, 30vw, 140px);
-    margin: 1.5rem auto 0;
-    opacity: 0.75;
-  }
+  /* Logo : légèrement plus petit sur mobile */
+  .hero-deco-bottom-left { width: clamp(80px, 30vw, 130px); }
 }
 
 /* ── Mobile 640px ── */

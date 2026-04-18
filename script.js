@@ -289,6 +289,8 @@ window.addEventListener('DOMContentLoaded', function () {
     var lbTouchStartX = 0;
     lightbox.addEventListener('touchstart', function (e) { lbTouchStartX = e.touches[0].clientX; }, { passive: true });
     lightbox.addEventListener('touchend', function (e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (visibleImages.length <= 1) return;
       var dx = e.changedTouches[0].clientX - lbTouchStartX;
       if (Math.abs(dx) > 50) { if (dx < 0) goTo(currentIndex + 1); else goTo(currentIndex - 1); }
     }, { passive: true });
@@ -431,8 +433,10 @@ window.addEventListener('DOMContentLoaded', function () {
     eventLightbox.addEventListener('touchstart', function (e) {
       evTouchStartX = e.touches[0].clientX;
       evTouchStartY = e.touches[0].clientY;
+      e.stopPropagation();
     }, { passive: true });
     eventLightbox.addEventListener('touchend', function (e) {
+      e.stopPropagation();
       var dx = Math.abs(e.changedTouches[0].clientX - evTouchStartX);
       var dy = Math.abs(e.changedTouches[0].clientY - evTouchStartY);
       if (dy > 60 && dy > dx) closeAffiche();
