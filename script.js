@@ -278,7 +278,35 @@ window.addEventListener('DOMContentLoaded', function () {
       var dx = e.changedTouches[0].clientX - lbTouchStartX;
       if (Math.abs(dx) > 50) { if (dx < 0) goTo(currentIndex + 1); else goTo(currentIndex - 1); }
     }, { passive: true });
-  }
+
+    // Touch swipe on the photo grid itself to open lightbox and navigate
+    var gridEl = document.getElementById('photoGrid');
+    if (gridEl) {
+      var gridTouchStartX = 0, gridTouchStartY = 0, gridTouchTarget = null;
+      gridEl.addEventListener('touchstart', function (e) {
+        gridTouchStartX = e.touches[0].clientX;
+        gridTouchStartY = e.touches[0].clientY;
+        gridTouchTarget = e.target.closest('.photo-item');
+      }, { passive: true });
+      gridEl.addEventListener('touchend', function (e) {
+        if (!gridTouchTarget) return;
+        var dx = e.changedTouches[0].clientX - gridTouchStartX;
+        var dy = e.changedTouches[0].clientY - gridTouchStartY;
+        // Si le mouvement horizontal est dominant et suffisant → navigation
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+          // Trouver l'index de l'image touchée
+          var img = gridTouchTarget.querySelector('img');
+          if (!img) return;
+          var idx = visibleImages.indexOf(img);
+          if (idx === -1) return;
+          // Ouvrir la lightbox sur l'image voisine
+          if (dx < 0) openLightbox((idx + 1) % visibleImages.length);
+          else openLightbox((idx - 1 + visibleImages.length) % visibleImages.length);
+        }
+        gridTouchTarget = null;
+      }, { passive: true });
+    }
+  } // fin if (lightbox)
 
 
   /* =========================================

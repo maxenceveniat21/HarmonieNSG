@@ -315,6 +315,7 @@
   .hero-deco-top-left  { width: clamp(100px, 18vw, 220px); }
   .hero-cta { padding: 0.85rem 2rem; }
 
+  /* Sur tablette/mobile, le logo décoratif reste en static sous le contenu */
   .logo-right-text {
     position: static;
     display: block;
@@ -334,6 +335,12 @@
   .president-quote { font-size: clamp(1rem, 2.5vw, 1.4rem); }
 }
 
+/* ── Mobile strict : masquer les décos qui chevauchent les boutons ── */
+@media (max-width: 640px) {
+  .hero-deco-top-left,
+  .hero-deco-bottom-left { display: none; }
+}
+
 /* ── Mobile 640px ── */
 @media (max-width: 640px) {
   .hero { padding: 2.5rem 1rem 2.5rem; min-height: 80vh; }
@@ -343,6 +350,8 @@
   .hero-deco-bottom-left { display: none; }
   .hero-cta-column { flex-direction: column; align-items: center; gap: 0.5rem; }
   .hero-cta { padding: 0.8rem 1.8rem; margin: 0; }
+  /* Le 4e bouton Contact rejoint la colonne sur mobile */
+  .hero-content > .hero-cta { margin-top: 0; }
 
   .stats { grid-template-columns: 1fr; }
   .stat { padding: 1.5rem 1rem; }

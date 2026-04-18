@@ -13,6 +13,17 @@
   gap: 3rem; padding: 0 2rem;
 }
 
+/* Ajustement du top selon la hauteur du header responsive */
+@media (max-width: 860px) {
+  .galerie-nav { top: 70px; }
+}
+@media (max-width: 480px) {
+  .galerie-nav { top: 60px; }
+}
+@media (max-width: 380px) {
+  .galerie-nav { top: 56px; }
+}
+
 .galerie-nav-link {
   font-family: var(--font-caps);
   font-size: var(--text-xs); font-weight: 400;
@@ -245,12 +256,12 @@
   .programme-item--reverse { grid-template-columns: 1fr 200px; }
   .video-grid-short { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .video-embed-wrap-short { width: 85%; }
-  .galerie-nav { gap: 2rem; top: 70px; }
+  .galerie-nav { gap: 2rem; }
 }
 
 /* ── Tablette 860px ── */
 @media (max-width: 860px) {
-  .galerie-nav { gap: 1.5rem; top: 70px; padding: 0 1rem; }
+  .galerie-nav { gap: 1.5rem; padding: 0 1rem; }
   .galerie-nav-link { letter-spacing: 0.15em; }
 
   .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }

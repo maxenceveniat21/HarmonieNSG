@@ -112,19 +112,21 @@
   .timeline-photo-small-side {
     position: static;
     height: auto;
-    max-height: 200px;
+    max-height: 220px;
     object-fit: cover;
     width: 100%;
+    max-width: 100%;
     margin-top: 1rem;
+    margin-left: 0;
   }
 
-  /* Paires d'images côte à côte — on les empile */
+  /* Paires d'images côte à côte — on les empile et on contraint la hauteur */
   .photo-row { flex-direction: column; gap: 1rem; }
-  .photo-row img { margin-left: 0; }
+  .photo-row img { margin-left: 0; max-width: 100%; width: 100%; }
 
   .timeline-photo { width: 100%; max-width: 100%; margin-left: 0; }
   .timeline-photo-long { max-height: 320px; width: 100%; object-fit: cover; }
-  .timeline-photo-small-side-v2 { max-width: 100%; max-height: 300px; width: 100%; }
+  .timeline-photo-small-side-v2 { max-width: 100%; max-height: 300px; width: 100%; object-fit: cover; }
 
   .timeline-item { padding-left: 2rem; }
 }
@@ -150,10 +152,11 @@
   .timeline { padding: 1rem 0; }
   .timeline-item { padding-left: 1.8rem; padding-bottom: 2.8rem; }
   .timeline-title { font-size: 1.3rem; }
-  .timeline-photo { max-width: 100%; }
-  .timeline-photo-long { max-height: 280px; }
-  .timeline-photo-small-side-v2 { max-height: 280px; }
+  .timeline-photo { max-width: 100%; width: 100%; }
+  .timeline-photo-long { max-height: 280px; width: 100%; object-fit: cover; }
+  .timeline-photo-small-side-v2 { max-height: 280px; width: 100%; max-width: 100%; object-fit: cover; }
   .photo-row { flex-direction: column; gap: 0.8rem; }
+  .photo-row img { margin-left: 0; max-width: 100%; width: 100%; }
   /* Forcer les années en flux sur mobile */
   .timeline-year,
   .timeline-year-date,
