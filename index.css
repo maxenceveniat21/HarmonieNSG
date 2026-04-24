@@ -274,7 +274,7 @@
 
 .president-quote-mark {
   font-family: var(--font-serif);
-  font-size: 8rem; line-height: 1;
+  font-size: 5rem; line-height: 1;
   color: var(--gold); opacity: 0.15;
   position: absolute; top: -2rem; left: -1rem;
   pointer-events: none; user-select: none;
@@ -289,7 +289,7 @@
 }
 
 .president-quote {
-  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  font-size: clamp(0.7rem, 2vw, 1.5rem);
   font-weight: 300; font-style: italic;
   color: var(--gold); line-height: 1.7;
   opacity: 0.9; position: relative; z-index: 1;
@@ -350,7 +350,7 @@
   .president-photo-wrap { margin: 0 auto; }
   .president-sig { margin: 1.5rem auto 0; }
   .president-photo { width: 140px; height: 140px; }
-  .president-quote { font-size: clamp(1rem, 2.5vw, 1.4rem); }
+  .president-quote { font-size: clamp(0.7rem, 2.5vw, 1.1rem); }
 }
 
 /* ── Mobile strict 640px : masquer top-right (notes) ── */
@@ -384,7 +384,7 @@
   .president-section { padding: 3rem 1rem; }
   .president-photo { width: 110px; height: 110px; }
   .president-name { font-size: 1rem; }
-  .president-quote-mark { font-size: 5rem; }
+  .president-quote-mark { font-size: 3rem; }
 }
 
 /* ── Très petit mobile 380px ── */
@@ -398,5 +398,5 @@
   .stat-number { font-size: 1.6rem; }
   .president-section { padding: 2.5rem 0.8rem; }
   .president-photo { width: 90px; height: 90px; }
-  .president-quote { font-size: 1rem; }
+  .president-quote { font-size: 0.75rem; }
 }
