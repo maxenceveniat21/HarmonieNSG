@@ -4,7 +4,7 @@
 
 /* ===== HERO ===== */
 .hero {
-  min-height: calc(100vh - 80px); /* header desktop = 80px */
+  min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,19 +33,9 @@
   pointer-events: none;
   user-select: none;
 }
-.hero-deco-top-right {
-  right: -2%; top: 50%;
-  transform: translateY(-50%);
-  width: clamp(160px, 22vw, 500px);
-}
-.hero-deco-top-left {
-  left: 7%; top: 5%;
-  width: clamp(80px, 10vw, 200px);
-}
-.hero-deco-bottom-left {
-  left: 7%; top: 60%;
-  width: clamp(80px, 24vw, 200px);
-}
+.hero-deco-top-right  { right: -2%; top: 50%; transform: translateY(-50%); width: clamp(160px, 22vw, 500px); }
+.hero-deco-top-left   { left: 7%; top: 5%; width: clamp(80px, 10vw, 200px); }
+.hero-deco-bottom-left { left: 7%; top: 60%; width: clamp(80px, 24vw, 200px); }
 
 /* Contenu centré */
 .hero-content {
@@ -116,13 +106,7 @@
   animation: fadeUp 0.9s 0.6s ease both;
   display: inline-block;
 }
-
-/* Bouton Contact seul en dessous du groupe */
-.hero-content > .hero-cta {
-  margin-top: 0.8rem;
-  margin-left: 0;
-}
-
+.hero-content > .hero-cta { margin-top: 0.8rem; margin-left: 0; }
 .hero-cta:hover { background: transparent; color: var(--navy); }
 
 
@@ -163,36 +147,12 @@
   font-size: 0.9rem;
   transition: transform 0.2s, opacity 0.2s;
 }
-.hero-next-concert:hover .hero-next-arrow {
-  transform: translateX(3px);
-  opacity: 1;
-}
-
-@media (max-width: 480px) {
-  .hero-next-concert { flex-direction: column; gap: 0.3rem; text-align: center; }
-  .hero-next-arrow { display: none; }
-}
-
+.hero-next-concert:hover .hero-next-arrow { transform: translateX(3px); opacity: 1; }
 
 .logo-right-text {
   position: absolute;
   width: clamp(200px, 28vw, 520px);
   right: 6%; top: 102%;
-}
-
-/* Dès 1100px le logo peut chevaucher le contenu suivant — on le sort du flux */
-@media (max-width: 1100px) {
-  .logo-right-text {
-    position: static;
-    display: block;
-    width: clamp(90px, 12vw, 200px);
-    margin: 1.5rem auto 0;
-  }
-}
-
-/* Sur mobile, l'image notes est trop petite pour être utile — on la masque */
-@media (max-width: 640px) {
-  .logo-right-text { display: none; }
 }
 
 
@@ -255,29 +215,20 @@
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
-
-.president-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-}
+.president-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .president-name {
   font-family: var(--font-serif);
   font-size: 1.1rem; font-weight: 600;
-  color: var(--gold); text-align: left;
+  color: var(--gold);
 }
-
 .president-role {
   font-family: var(--font-caps);
   font-size: var(--text-xs); font-weight: 400;
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--gold); opacity: 0.8;
-  text-align: left; margin-top: 0.3rem;
+  margin-top: 0.3rem;
 }
-
-.president-quote-wrap { position: relative; }
 
 .president-tag {
   font-family: var(--font-caps);
@@ -302,90 +253,60 @@
    RESPONSIVE ACCUEIL
    ============================================= */
 
-/* ── 1440px ── */
 @media (max-width: 1440px) {
-  .hero { min-height: calc(100vh - 80px); padding: 4rem 2rem 3rem; }
+  .hero { padding: 4rem 2rem 3rem; }
   .hero h1 { font-size: clamp(2.2rem, 5vw, 5rem); }
   .president-section { padding: 5rem 2rem; }
   .president-inner { gap: 3.5rem; }
 }
 
-/* ── 1100px ── */
 @media (max-width: 1100px) {
   .hero-deco-top-left     { width: clamp(120px, 18vw, 280px); }
-  .hero-deco-bottom-right { width: clamp(120px, 20vw, 320px); }
   .hero-deco-top-right    { width: clamp(70px, 9vw, 150px); }
+  .logo-right-text { position: static; display: block; width: clamp(90px, 12vw, 200px); margin: 1.5rem auto 0; }
   .president-inner { gap: 2.5rem; }
 }
 
-/* ── Tablette 860px ── */
 @media (max-width: 860px) {
   .hero { padding: 3.5rem 1.5rem 3rem; min-height: calc(100vh - 70px); flex-direction: column; }
   .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
   .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.15em; }
   .hero-deco-bottom-right { display: none; }
-  /* Sur tablette, le logo sort de l'absolute et s'affiche sous le contenu */
-  .hero-deco-bottom-left {
-    position: static;
-    order: 2;
-    display: block;
-    width: clamp(90px, 14vw, 160px);
-    margin: 1.5rem auto 0;
-    opacity: 0.75;
-  }
+  .hero-deco-bottom-left { position: static; order: 2; display: block; width: clamp(90px, 14vw, 160px); margin: 1.5rem auto 0; opacity: 0.75; }
   .hero-content { order: 1; }
-  /* La clé de sol : masquée sur tablette, elle est trop petite pour apporter quelque chose */
   .hero-deco-top-left  { display: none; }
   .hero-deco-top-right { right: 2%; top: 2%; width: clamp(60px, 10vw, 120px); }
   .hero-cta { padding: 0.85rem 2rem; }
-
-  /* Sur tablette/mobile, le logo décoratif reste en static sous le contenu */
-
   .stats { grid-template-columns: repeat(3, 1fr); }
   .stat { padding: 2rem 1rem; }
   .stat-number { font-size: clamp(1.6rem, 4vw, 2.5rem); }
-
   .president-section { padding: 4rem 1.5rem; }
   .president-sig { margin: 1.5rem auto 0; }
   .president-photo { width: 140px; height: 140px; }
   .president-quote { font-size: clamp(0.7rem, 2.5vw, 1.1rem); }
 }
 
-/* ── Mobile strict 640px : masquer top-right (notes) ── */
 @media (max-width: 640px) {
   .hero-deco-top-right { display: none; }
-  /* Logo : légèrement plus petit sur mobile */
   .hero-deco-bottom-left { width: clamp(80px, 30vw, 130px); }
-}
-
-/* ── Mobile 640px ── */
-@media (max-width: 640px) {
-  .hero { padding: 2.5rem 1rem 2.5rem; min-height: 80vh; }
+  .logo-right-text { display: none; }
+  .hero { padding: 2.5rem 1rem; min-height: 80vh; }
   .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
   .hero-cta-column { flex-direction: column; align-items: center; gap: 0.5rem; }
   .hero-cta { padding: 0.8rem 1.8rem; margin: 0; width: 100%; max-width: 280px; text-align: center; }
-  /* Le 4e bouton Contact : même largeur et espacement que les 3 autres */
-  .hero-content > .hero-cta {
-    margin-top: 0.5rem;
-    margin-left: 0;
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
-  }
-
+  .hero-content > .hero-cta { margin-top: 0.5rem; margin-left: 0; width: 100%; max-width: 280px; text-align: center; }
   .stats { grid-template-columns: 1fr; }
   .stat { padding: 1.5rem 1rem; }
 }
 
-/* ── Mobile 480px ── */
 @media (max-width: 480px) {
+  .hero-next-concert { flex-direction: column; gap: 0.3rem; text-align: center; }
+  .hero-next-arrow { display: none; }
   .president-section { padding: 3rem 1rem; }
   .president-photo { width: 110px; height: 110px; }
   .president-name { font-size: 1rem; }
-  .president-quote-mark { font-size: 3rem; }
 }
 
-/* ── Très petit mobile 380px ── */
 @media (max-width: 380px) {
   .hero { padding: 2rem 0.8rem; }
   .hero h1 { font-size: clamp(1.6rem, 8vw, 2.2rem); }
