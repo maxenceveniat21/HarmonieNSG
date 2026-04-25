@@ -20,7 +20,7 @@ gtag('config', 'G-XFFFR3DDJY');
   }).join('<div class="nav-divider"></div>');
 
   var headerHTML = '<header><div class="header-inner"><div class="header-left">'
-    + '<a class="site-title" href="index.html"><img class="logo-header" src="cle/Logo Harmonie Municipale NSG 2.png" alt="">'
+    + '<a href="index.html"><img class="logo-header" src="cle/Logo Harmonie Municipale NSG 2.png" alt="Logo Harmonie de Nuits-Saint-Georges"></a>'
     + '<a class="site-title" href="index.html"><span class="label">Musique &amp; Partage</span>'
     + '<span class="name">L\'Harmonie de Nuits-St-Georges</span></a></div>'
     + '<button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">'
@@ -275,13 +275,13 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-    document.getElementById('lightboxPrev').addEventListener('click', function () { goTo(currentIndex - 1); });
-    document.getElementById('lightboxNext').addEventListener('click', function () { goTo(currentIndex + 1); });
+    document.getElementById('lightboxPrev').addEventListener('click', function () { if (!isProgrammeMode) goTo(currentIndex - 1); });
+    document.getElementById('lightboxNext').addEventListener('click', function () { if (!isProgrammeMode) goTo(currentIndex + 1); });
     lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', function (e) {
       if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
-      if (e.key === 'ArrowLeft')  goTo(currentIndex - 1);
+      if (!isProgrammeMode && e.key === 'ArrowRight') goTo(currentIndex + 1);
+      if (!isProgrammeMode && e.key === 'ArrowLeft')  goTo(currentIndex - 1);
       if (e.key === 'Escape')     closeLightbox();
     });
 
@@ -290,6 +290,7 @@ window.addEventListener('DOMContentLoaded', function () {
     lightbox.addEventListener('touchstart', function (e) { lbTouchStartX = e.touches[0].clientX; }, { passive: true });
     lightbox.addEventListener('touchend', function (e) {
       if (!lightbox.classList.contains('open')) return;
+      if (isProgrammeMode) return;
       if (visibleImages.length <= 1) return;
       var dx = e.changedTouches[0].clientX - lbTouchStartX;
       if (Math.abs(dx) > 50) { if (dx < 0) goTo(currentIndex + 1); else goTo(currentIndex - 1); }
@@ -368,11 +369,13 @@ window.addEventListener('DOMContentLoaded', function () {
      AFFICHES PROGRAMMES — ouverture en lightbox
      ========================================= */
   var programmeImgWraps = document.querySelectorAll('.programme-img-wrap');
+  var isProgrammeMode = false;
   if (programmeImgWraps.length && lightbox) {
     programmeImgWraps.forEach(function (wrap) {
       var img = wrap.querySelector('img');
       if (!img) return;
       wrap.addEventListener('click', function () {
+        isProgrammeMode = true;
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
         document.getElementById('lightboxPrev').style.display = 'none';
@@ -384,6 +387,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     function restoreLightboxNav() {
+      isProgrammeMode = false;
       document.getElementById('lightboxPrev').style.display = '';
       document.getElementById('lightboxNext').style.display = '';
       document.getElementById('lightboxCounter').style.display = '';

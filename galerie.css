@@ -176,6 +176,12 @@ section[id] {
   color: var(--navy); opacity: 0.72;
   padding-left: 1rem; position: relative;
 }
+.programme-oeuvres ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
 
 .programme-dl {
   display: inline-block; margin-top: 1.5rem;

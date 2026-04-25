@@ -347,30 +347,6 @@
   line-height: 1.1;
 }
 
-/* ===== LIGHTBOX AFFICHE (agenda) ===== */
-.event-lightbox {
-  position: fixed; inset: 0; z-index: 3000;
-  background: rgba(2, 0, 47, 0.96);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.event-lightbox.open { opacity: 1; pointer-events: all; }
-.event-lightbox img {
-  max-width: 90vw; max-height: 90vh;
-  object-fit: contain; display: block;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
-}
-.event-lightbox-close {
-  position: absolute; top: 1.5rem; right: 1.5rem;
-  width: 42px; height: 42px; border-radius: 50%;
-  background: none; border: 1px solid rgba(255, 235, 184, 0.3);
-  color: var(--gold); font-size: 1.1rem; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0.6; transition: opacity 0.2s, border-color 0.2s;
-}
-.event-lightbox-close:hover { opacity: 1; border-color: var(--gold); }
-
 /* ===== RESPONSIVE À LA UNE ===== */
 @media (max-width: 1100px) {
   .une-wrapper { gap: 2.5rem; }
