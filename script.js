@@ -358,11 +358,31 @@ window.addEventListener('DOMContentLoaded', function () {
       var msg    = document.getElementById('f-message').value.trim();
       if (!prenom || !email || !sujet || !msg) { alert('Merci de remplir tous les champs.'); return; }
       var nomComplet = nom ? prenom + ' ' + nom : prenom;
-      var body = 'De : ' + nomComplet + ' (' + email + ')\n\n' + msg;
-      var mailtoUrl = 'mailto:maximussdenuits@gmail.Com'
-        + '?subject=' + encodeURIComponent(sujet)
-        + '&body=' + encodeURIComponent(body);
-      window.open(mailtoUrl);
+      fetch('https://formspree.io/f/mwvyebey', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: nomComplet,
+          email: email,
+          subject: sujet,
+          message: msg
+        })
+      })
+      .then(function(res) {
+        if (res.ok) {
+          alert('Message envoyé ! Nous vous répondrons rapidement.');
+          document.getElementById('f-prenom').value = '';
+          if (document.getElementById('f-nom')) document.getElementById('f-nom').value = '';
+          document.getElementById('f-email').value = '';
+          document.getElementById('f-sujet').value = '';
+          document.getElementById('f-message').value = '';
+        } else {
+          alert('Une erreur est survenue. Merci de réessayer.');
+        }
+      })
+      .catch(function() {
+        alert('Une erreur est survenue. Merci de réessayer.');
+      });
     };
   }
 
