@@ -170,7 +170,7 @@ section[id] { scroll-margin-top: 130px; }
 .video-grid-short {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14rem; margin-top: 3rem;
+  gap: 1rem; margin-top: 3rem;
 }
 
 .video-grid {
