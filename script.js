@@ -359,9 +359,10 @@ window.addEventListener('DOMContentLoaded', function () {
       if (!prenom || !email || !sujet || !msg) { alert('Merci de remplir tous les champs.'); return; }
       var nomComplet = nom ? prenom + ' ' + nom : prenom;
       var body = 'De : ' + nomComplet + ' (' + email + ')\n\n' + msg;
-      window.location.href = 'mailto:harmonie.nuits@yahoo.fr'
+      var mailtoUrl = 'mailto:maximussdenuits@gmail.Com'
         + '?subject=' + encodeURIComponent(sujet)
         + '&body=' + encodeURIComponent(body);
+      window.open(mailtoUrl);
     };
   }
 
