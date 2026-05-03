@@ -93,7 +93,7 @@
 
 .timeline-photo        { margin-top: 1.5rem; margin-left: 0.5rem; width: 100%; max-width: 520px; }
 .timeline-photo-long   { height: 450px; max-height: 55vh; object-fit: cover; }
-.timeline-photo-small-side   { max-height: 55vh; object-fit: cover; max-width: 45%; height: 220px; }
+.timeline-photo-small-side   { max-height: 80vh; object-fit: cover; max-width: 85%; height: 630px; }
 .timeline-photo-small-side-v2 { height: 420px; max-height: 55vh; object-fit: cover; max-width: 45%; }
 
 

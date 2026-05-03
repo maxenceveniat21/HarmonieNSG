@@ -96,7 +96,7 @@ header {
 
 .header-left { display: flex; align-items: center; gap: 1rem; }
 
-.logo-header { height: 80px; width: auto; }
+.logo-header { margin-top: 13px; height: 80px; width: auto; }
 
 .site-title { display: flex; flex-direction: column; line-height: 1; }
 

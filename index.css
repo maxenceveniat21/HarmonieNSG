@@ -283,7 +283,7 @@
   .president-section { padding: 4rem 1.5rem; }
   .president-sig { margin: 1.5rem auto 0; }
   .president-photo { width: 140px; height: 140px; }
-  .president-quote { font-size: clamp(0.7rem, 2.5vw, 1.1rem); }
+  .president-quote { font-size: clamp(1.1rem, 3.5vw, 1.5rem); }
 }
 
 @media (max-width: 640px) {
@@ -317,5 +317,5 @@
   .stat-number { font-size: 1.6rem; }
   .president-section { padding: 2.5rem 0.8rem; }
   .president-photo { width: 90px; height: 90px; }
-  .president-quote { font-size: 0.75rem; }
+  .president-quote { font-size: 1.2rem; }
 }
