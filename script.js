@@ -2,17 +2,168 @@
    HARMONIE DE NUITS-ST-GEORGES — Script global
    ============================================= */
 
-
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XFFFR3DDJY');
 
 /* =========================================
+   SOURCE UNIQUE DE VÉRITÉ — ÉVÉNEMENTS
+   Pour ajouter/modifier un événement, c'est ici.
+   ========================================= */
+var EVENTS = {
+  concerts: [
+    {
+      date:     '2026-05-30',          // Format YYYY-MM-DD
+      jour:     '30',
+      mois:     'Mai 2026',
+      titre:    'Concert de Printemps',
+      lieu:     'Salle des fêtes de Nuits-St-Georges',
+      details:  '20h30 — Entrée libre',
+      lat:      47.13611304591573,
+      lng:      4.950225504769968,
+      mapLieu:  'Nuits-St-Georges — Salle des fêtes',
+      affiche:  'images/affiche30mai2026.jpg'
+    },
+    {
+      date:     '2026-06-19',
+      jour:     '19',
+      mois:     'Juin 2026',
+      titre:    "Concert d'été à Fussey",
+      lieu:     'Salle des fêtes',
+      details:  '20h30 — Entrée libre',
+      lat:      47.11832336916324,
+      lng:      4.8356295849529864,
+      mapLieu:  'Fussey — Salle des fêtes',
+      affiche:  null
+    },
+    {
+      date:     '2026-07-05',
+      jour:     '5',
+      mois:     'Juillet 2026',
+      titre:    "Concert d'été à Villers-La-Faye",
+      lieu:     'Salle des fêtes',
+      details:  "Fin d'après-midi — Entrée libre",
+      lat:      47.10593814859927,
+      lng:      4.877856559737992,
+      mapLieu:  'Villers-La-Faye — Salle des fêtes',
+      affiche:  null
+    },
+    {
+      date:     '2026-12-12',
+      jour:     '12',
+      mois:     'Décembre 2026',
+      titre:    'Concert de Noël',
+      lieu:     'Salle des fêtes de Nuits-St-Georges',
+      details:  '20h30 — Entrée libre',
+      lat:      47.13611304591573,
+      lng:      4.950225504769968,
+      mapLieu:  'Nuits-St-Georges — Salle des fêtes',
+      affiche:  null
+    }
+  ],
+
+  animations: [
+    {
+      date:     '2026-05-08',
+      jour:     '08',
+      mois:     'Mai 2026',
+      titre:    'Cérémonie du 8 Mai',
+      lieu:     'Monument aux Morts — Villars-Fontaine',
+      details:  'Début à 10h00',
+      lat:      47.149794668434346,
+      lng:      4.892438357394405,
+      mapLieu:  'Villars-Fontaine — Monument aux morts'
+    },
+    {
+      date:     '2026-05-08',
+      jour:     '08',
+      mois:     'Mai 2026',
+      titre:    'Cérémonie du 8 Mai',
+      lieu:     'Monument aux Morts — Nuits-St-Georges',
+      details:  'Début à 11h00',
+      lat:      47.13801003531926,
+      lng:      4.951100546734277,
+      mapLieu:  'Nuits-St-Georges — Monument aux morts'
+    },
+    {
+      date:     '2026-05-25',
+      jour:     '25',
+      mois:     'Mai 2026',
+      titre:    'Animation de rue',
+      lieu:     'Reulle-Vergy',
+      details:  'De 14h à 18h',
+      lat:      47.186877999500204,
+      lng:      4.896331877168994,
+      mapLieu:  'Reulle-Vergy — Place de la Mairie'
+    }
+  ]
+};
+
+/* =========================================
+   UTILITAIRES DATE
+   ========================================= */
+
+// Retourne la date du jour au format YYYY-MM-DD (heure locale)
+function todayStr() {
+  var d = new Date();
+  var mm = String(d.getMonth() + 1).padStart(2, '0');
+  var dd = String(d.getDate()).padStart(2, '0');
+  return d.getFullYear() + '-' + mm + '-' + dd;
+}
+
+// Filtre les événements dont la date >= aujourd'hui
+function evenementsFuturs(liste) {
+  var today = todayStr();
+  return liste.filter(function(e) { return e.date >= today; });
+}
+
+// Retourne le prochain événement (concert uniquement) toutes années confondues
+function prochainConcert() {
+  var today = todayStr();
+  // D'abord parmi les concerts de l'année courante
+  var futurs = EVENTS.concerts.filter(function(e) { return e.date >= today; });
+  if (futurs.length > 0) return futurs[0];
+  // Sinon, le premier de la liste (année suivante, on renvoie quand même le premier)
+  return EVENTS.concerts[0];
+}
+
+/* =========================================
+   GÉNÉRATION HTML D'UNE CARTE ÉVÉNEMENT
+   ========================================= */
+function buildEventCard(evt, type, mapId) {
+  var thumbHtml = '';
+  if (evt.affiche) {
+    thumbHtml = '<div class="event-thumb-wrap" role="button" tabindex="0" aria-label="Voir l\'affiche en grand">'
+      + '<img class="event-thumb" src="' + evt.affiche + '" alt="Affiche">'
+      + '</div>';
+  }
+
+  return '<div class="event-card"'
+    + ' data-lat="' + evt.lat + '"'
+    + ' data-lng="' + evt.lng + '"'
+    + ' data-lieu="' + evt.mapLieu + '"'
+    + ' data-map="' + mapId + '">'
+    + '<p class="event-type">' + type + '</p>'
+    + '<div class="event-date-row">'
+    + '<div class="event-date-col">'
+    + '<p class="event-date">' + evt.jour + '</p>'
+    + '<p class="event-month">' + evt.mois + '</p>'
+    + '</div>'
+    + thumbHtml
+    + '</div>'
+    + '<div class="event-sep"></div>'
+    + '<p class="event-title">' + evt.titre + '</p>'
+    + '<p class="event-location">' + evt.lieu + '<br>' + evt.details + '</p>'
+    + '<button class="map-btn">📍 Voir sur la carte</button>'
+    + '</div>';
+}
+
+/* =========================================
    INJECTION HEADER / FOOTER
    ========================================= */
 (function () {
-  var nav = ['index.html','historique.html','agenda.html','galerie.html','contact.html'];
+  var nav    = ['index.html','historique.html','agenda.html','galerie.html','contact.html'];
   var labels = ['Accueil','Historique','Agenda','Galerie','Contact & Partenaires'];
 
   var navLinks = nav.map(function (href, i) {
@@ -71,6 +222,54 @@ gtag('config', 'G-XFFFR3DDJY');
 window.addEventListener('DOMContentLoaded', function () {
 
   /* =========================================
+     BADGE PROCHAIN CONCERT (page accueil)
+     ========================================= */
+  var badge     = document.querySelector('.hero-next-concert');
+  var badgeInfo = document.querySelector('.hero-next-info');
+  if (badge && badgeInfo) {
+    var next = prochainConcert();
+    if (next) {
+      // Format "30 mai — Concert de Printemps à Nuits-Saint-Georges"
+      var moisCourt = next.mois.split(' ')[0].toLowerCase(); // "mai", "juin"…
+      var annee     = next.mois.split(' ')[1];               // "2026"
+      var today     = todayStr();
+      // On n'affiche l'année que si c'est l'année prochaine
+      var anneeActuelle = String(new Date().getFullYear());
+      var suffixAnnee   = (annee !== anneeActuelle) ? ' ' + annee : '';
+      badgeInfo.textContent = next.jour + ' ' + moisCourt + suffixAnnee + ' — ' + next.titre;
+    }
+  }
+
+  /* =========================================
+     GÉNÉRATION DES CARROUSELS (page agenda)
+     ========================================= */
+  var concertsTrack = document.getElementById('concertsTrack');
+  var animsTrack    = document.getElementById('animsTrack');
+
+  if (concertsTrack) {
+    var futursC = evenementsFuturs(EVENTS.concerts);
+    if (futursC.length === 0) {
+      // Aucun concert à venir : on laisse le carrousel vide (section reste visible)
+      concertsTrack.innerHTML = '<p style="padding:2rem;opacity:0.5;font-family:var(--font-caps);font-size:var(--text-xs);letter-spacing:0.2em;text-transform:uppercase;">Aucun concert programmé pour le moment</p>';
+    } else {
+      concertsTrack.innerHTML = futursC.map(function(e) {
+        return buildEventCard(e, 'Concert', 'mapConcerts');
+      }).join('');
+    }
+  }
+
+  if (animsTrack) {
+    var futursA = evenementsFuturs(EVENTS.animations);
+    if (futursA.length === 0) {
+      animsTrack.innerHTML = '<p style="padding:2rem;opacity:0.5;font-family:var(--font-caps);font-size:var(--text-xs);letter-spacing:0.2em;text-transform:uppercase;">Aucune animation programmée pour le moment</p>';
+    } else {
+      animsTrack.innerHTML = futursA.map(function(e) {
+        return buildEventCard(e, 'Animation', 'mapAnims');
+      }).join('');
+    }
+  }
+
+  /* =========================================
      MENU HAMBURGER
      ========================================= */
   var toggle  = document.getElementById('menuToggle');
@@ -97,6 +296,9 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
 
+  /* =========================================
+     CARROUSELS
+     ========================================= */
   function initCarousel(trackId, prevId, nextId) {
     var track   = document.getElementById(trackId);
     var btnPrev = document.getElementById(prevId);
@@ -124,17 +326,24 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function update() {
       var visible = getVisible();
-      var cardW = getCardWidth();
+      var total   = track.children.length;
+      var cardW   = getCardWidth();
+      // Clamp current pour éviter un dépassement après un resize
+      if (current > total - visible) current = Math.max(0, total - visible);
       track.style.transform = 'translateX(-' + (current * cardW) + 'px)';
       btnPrev.classList.toggle('carousel-arrow--disabled', current === 0);
-      btnNext.classList.toggle('carousel-arrow--disabled', current >= track.children.length - visible);
+      btnNext.classList.toggle('carousel-arrow--disabled', current >= total - visible);
     }
 
-    btnNext.addEventListener('click', function () { if (current < track.children.length - getVisible()) { current++; update(); } });
-    btnPrev.addEventListener('click', function () { if (current > 0) { current--; update(); } });
+    btnNext.addEventListener('click', function () {
+      if (current < track.children.length - getVisible()) { current++; update(); }
+    });
+    btnPrev.addEventListener('click', function () {
+      if (current > 0) { current--; update(); }
+    });
     window.addEventListener('resize', function () { current = 0; update(); });
 
-    // Swipe touch sur le carrousel
+    // Touch swipe
     var touchStartX = 0, touchStartY = 0;
     track.parentElement.addEventListener('touchstart', function (e) {
       touchStartX = e.touches[0].clientX;
@@ -173,7 +382,9 @@ window.addEventListener('DOMContentLoaded', function () {
       lieuLabel.textContent = lieu;
       if (!map) {
         map = L.map(leafletDivId).setView([lat, lng], 14);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
       }
       map.setView([lat, lng], 14);
       if (marker) map.removeLayer(marker);
@@ -189,7 +400,11 @@ window.addEventListener('DOMContentLoaded', function () {
     itBtn.addEventListener('click', function () {
       var depart = input.value.trim();
       if (!depart) { input.focus(); input.placeholder = "Entrez votre adresse d'abord…"; return; }
-      window.open('https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(depart) + '&destination=' + currentLat + ',' + currentLng + '&travelmode=driving', '_blank');
+      window.open(
+        'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(depart)
+        + '&destination=' + currentLat + ',' + currentLng + '&travelmode=driving',
+        '_blank'
+      );
     });
     input.addEventListener('keydown', function (e) { if (e.key === 'Enter') itBtn.click(); });
   }
@@ -197,12 +412,18 @@ window.addEventListener('DOMContentLoaded', function () {
   initMapBlock('mapConcerts', 'mapConcertsLeaflet', 'mapLieuConcerts', 'inputConcerts', 'btnItineraryConcerts');
   initMapBlock('mapAnims',    'mapAnimsLeaflet',    'mapLieuAnims',    'inputAnims',    'btnItineraryAnims');
 
-  document.querySelectorAll('.map-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var card = btn.closest('.event-card');
-      var c = document.getElementById(card.getAttribute('data-map'));
-      if (c && c._showMap) c._showMap(parseFloat(card.dataset.lat), parseFloat(card.dataset.lng), card.dataset.lieu);
-    });
+  // Délégation d'événement sur les .map-btn (générés dynamiquement)
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.map-btn');
+    if (!btn) return;
+    var card = btn.closest('.event-card');
+    if (!card) return;
+    var c = document.getElementById(card.getAttribute('data-map'));
+    if (c && c._showMap) c._showMap(
+      parseFloat(card.dataset.lat),
+      parseFloat(card.dataset.lng),
+      card.dataset.lieu
+    );
   });
 
 
@@ -235,7 +456,9 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  var lightbox = document.getElementById('lightbox');
+  var lightbox        = document.getElementById('lightbox');
+  var isProgrammeMode = false;
+
   if (lightbox) {
     var lightboxImg     = document.getElementById('lightboxImg');
     var lightboxCounter = document.getElementById('lightboxCounter');
@@ -282,21 +505,17 @@ window.addEventListener('DOMContentLoaded', function () {
       if (!lightbox.classList.contains('open')) return;
       if (!isProgrammeMode && e.key === 'ArrowRight') goTo(currentIndex + 1);
       if (!isProgrammeMode && e.key === 'ArrowLeft')  goTo(currentIndex - 1);
-      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'Escape') closeLightbox();
     });
 
-    // Touch swipe support for gallery lightbox
     var lbTouchStartX = 0;
     lightbox.addEventListener('touchstart', function (e) { lbTouchStartX = e.touches[0].clientX; }, { passive: true });
     lightbox.addEventListener('touchend', function (e) {
-      if (!lightbox.classList.contains('open')) return;
-      if (isProgrammeMode) return;
-      if (visibleImages.length <= 1) return;
+      if (!lightbox.classList.contains('open') || isProgrammeMode || visibleImages.length <= 1) return;
       var dx = e.changedTouches[0].clientX - lbTouchStartX;
       if (Math.abs(dx) > 50) { if (dx < 0) goTo(currentIndex + 1); else goTo(currentIndex - 1); }
     }, { passive: true });
 
-    // Touch swipe on the photo grid itself to open lightbox and navigate
     var gridEl = document.getElementById('photoGrid');
     if (gridEl) {
       var gridTouchStartX = 0, gridTouchStartY = 0, gridTouchTarget = null;
@@ -309,21 +528,18 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!gridTouchTarget) return;
         var dx = e.changedTouches[0].clientX - gridTouchStartX;
         var dy = e.changedTouches[0].clientY - gridTouchStartY;
-        // Si le mouvement horizontal est dominant et suffisant → navigation
         if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-          // Trouver l'index de l'image touchée
           var img = gridTouchTarget.querySelector('img');
           if (!img) return;
           var idx = visibleImages.indexOf(img);
           if (idx === -1) return;
-          // Ouvrir la lightbox sur l'image voisine
           if (dx < 0) openLightbox((idx + 1) % visibleImages.length);
           else openLightbox((idx - 1 + visibleImages.length) % visibleImages.length);
         }
         gridTouchTarget = null;
       }, { passive: true });
     }
-  } // fin if (lightbox)
+  }
 
 
   /* =========================================
@@ -358,39 +574,18 @@ window.addEventListener('DOMContentLoaded', function () {
       var msg    = document.getElementById('f-message').value.trim();
       if (!prenom || !email || !sujet || !msg) { alert('Merci de remplir tous les champs.'); return; }
       var nomComplet = nom ? prenom + ' ' + nom : prenom;
-      fetch('https://formspree.io/f/mwvyebey', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: nomComplet,
-          email: email,
-          subject: sujet,
-          message: msg
-        })
-      })
-      .then(function(res) {
-        if (res.ok) {
-          alert('Message envoyé ! Nous vous répondrons rapidement.');
-          document.getElementById('f-prenom').value = '';
-          if (document.getElementById('f-nom')) document.getElementById('f-nom').value = '';
-          document.getElementById('f-email').value = '';
-          document.getElementById('f-sujet').value = '';
-          document.getElementById('f-message').value = '';
-        } else {
-          alert('Une erreur est survenue. Merci de réessayer.');
-        }
-      })
-      .catch(function() {
-        alert('Une erreur est survenue. Merci de réessayer.');
-      });
+      var body = 'De : ' + nomComplet + ' (' + email + ')\n\n' + msg;
+      window.location.href = 'mailto:harmonie.nuits@yahoo.fr'
+        + '?subject=' + encodeURIComponent(sujet)
+        + '&body=' + encodeURIComponent(body);
     };
   }
+
 
   /* =========================================
      AFFICHES PROGRAMMES — ouverture en lightbox
      ========================================= */
   var programmeImgWraps = document.querySelectorAll('.programme-img-wrap');
-  var isProgrammeMode = false;
   if (programmeImgWraps.length && lightbox) {
     programmeImgWraps.forEach(function (wrap) {
       var img = wrap.querySelector('img');
@@ -422,38 +617,43 @@ window.addEventListener('DOMContentLoaded', function () {
 
   /* =========================================
      VIGNETTES AFFICHE + LIGHTBOX ÉVÉNEMENT
+     (délégation car cartes générées dynamiquement)
      ========================================= */
   var eventLightbox      = document.getElementById('eventLightbox');
   var eventLightboxImg   = document.getElementById('eventLightboxImg');
   var eventLightboxClose = document.getElementById('eventLightboxClose');
 
   if (eventLightbox) {
-    document.querySelectorAll('.event-thumb-wrap').forEach(function (wrap) {
-      var img = wrap.querySelector('img');
-      if (!img) return;
-
-      function openAffiche() {
-        eventLightboxImg.src = img.src;
-        eventLightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-      wrap.addEventListener('click', openAffiche);
-      wrap.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') openAffiche();
-      });
-    });
-
+    function openAffiche(imgSrc) {
+      eventLightboxImg.src = imgSrc;
+      eventLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
     function closeAffiche() {
       eventLightbox.classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    // Délégation (les .event-thumb-wrap sont créés dynamiquement)
+    document.addEventListener('click', function(e) {
+      var wrap = e.target.closest('.event-thumb-wrap');
+      if (!wrap) return;
+      var img = wrap.querySelector('img');
+      if (img) openAffiche(img.src);
+    });
+    document.addEventListener('keydown', function(e) {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('event-thumb-wrap')) {
+        var img = e.target.querySelector('img');
+        if (img) openAffiche(img.src);
+      }
+    });
+
     eventLightboxClose.addEventListener('click', closeAffiche);
     eventLightbox.addEventListener('click', function (e) { if (e.target === eventLightbox) closeAffiche(); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && eventLightbox.classList.contains('open')) closeAffiche();
     });
 
-    // Touch swipe to close on mobile
     var evTouchStartX = 0, evTouchStartY = 0;
     eventLightbox.addEventListener('touchstart', function (e) {
       evTouchStartX = e.touches[0].clientX;
@@ -467,4 +667,5 @@ window.addEventListener('DOMContentLoaded', function () {
       if (dy > 60 && dy > dx) closeAffiche();
     }, { passive: true });
   }
-});
+
+}); // fin DOMContentLoaded
