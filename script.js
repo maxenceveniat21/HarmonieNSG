@@ -74,28 +74,6 @@ var EVENTS = {
       lat:      47.149794668434346,
       lng:      4.892438357394405,
       mapLieu:  'Villars-Fontaine — Monument aux morts'
-    },
-    {
-      date:     '2026-05-08',
-      jour:     '08',
-      mois:     'Mai 2026',
-      titre:    'Cérémonie du 8 Mai',
-      lieu:     'Monument aux Morts — Nuits-St-Georges',
-      details:  'Début à 11h00',
-      lat:      47.13801003531926,
-      lng:      4.951100546734277,
-      mapLieu:  'Nuits-St-Georges — Monument aux morts'
-    },
-    {
-      date:     '2026-05-25',
-      jour:     '25',
-      mois:     'Mai 2026',
-      titre:    'Animation de rue',
-      lieu:     'Reulle-Vergy',
-      details:  'De 14h à 18h',
-      lat:      47.186877999500204,
-      lng:      4.896331877168994,
-      mapLieu:  'Reulle-Vergy — Place de la Mairie'
     }
   ]
 };
@@ -460,7 +438,6 @@ window.addEventListener('DOMContentLoaded', function () {
      FILTRES VIDÉOS
      ========================================= */
   var videoFilterBtns = document.querySelectorAll('[data-video-filter]');
-  var videoItems = document.querySelectorAll('#videoGrid .video-item');
 
   if (videoFilterBtns.length) {
     videoFilterBtns.forEach(function (btn) {
@@ -468,6 +445,7 @@ window.addEventListener('DOMContentLoaded', function () {
         videoFilterBtns.forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
         var filter = btn.getAttribute('data-video-filter');
+        var videoItems = document.querySelectorAll('#videoGrid .video-item');
         videoItems.forEach(function (item) {
           item.style.display = (filter === 'all' || item.getAttribute('data-cat') === filter) ? '' : 'none';
         });
