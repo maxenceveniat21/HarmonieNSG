@@ -408,7 +408,7 @@ window.addEventListener('DOMContentLoaded', function () {
   /* =========================================
      FILTRES PHOTOS + LIGHTBOX
      ========================================= */
-  var filterBtns = document.querySelectorAll('.filter-btn');
+  var filterBtns = document.querySelectorAll('.photo-filters .filter-btn');
   var photoItems = document.querySelectorAll('.photo-item');
   var visibleImages = [];
 
