@@ -234,9 +234,13 @@
     <p class="section-tag">En images et en son</p>
     <h2>Vidéos</h2>
     <div class="section-line"></div>
-
-    <div class="video-grid-short">
-      <div class="video-item">
+    <div class="video-filters">
+      <button class="filter-btn active" data-video-filter="all">Toutes</button>
+      <button class="filter-btn" data-video-filter="concert">Concerts</button>
+      <button class="filter-btn" data-video-filter="animation">Animations</button>
+    </div>
+    <div class="video-grid" id="videoGrid">
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/4T2R7Rh-xUg" title="Extrait du concert d'hiver 2025" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -245,7 +249,9 @@
           <p class="video-desc">Extrait du concert d'hiver 2025 - le célèbre Misirlou de Dick Dale arrangé pour harmonie.</p>
         </div>
       </div>
-      <div class="video-item">
+
+
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/E2CoTezu1Wk" title="Extrait du concert d'hiver 2025" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -254,7 +260,8 @@
           <p class="video-desc">Extrait du concert d'hiver 2025 - un hommage au compositeur légendaire Ennio Morricone.</p>
         </div>
       </div>
-      <div class="video-item">
+
+      <div class="video-item" data-cat="animation">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/PSENniaX658" title="Défilé à Nuits-Saint-Georges" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -263,19 +270,20 @@
           <p class="video-desc">L'Harmonie de Nuits-Saint-Georges en défilé dans les rues de la ville.</p>
         </div>
       </div>
-    </div>
 
-    <div class="video-grid">
-      <div class="video-item">
+
+      <div class="video-item" data-cat="animation">
         <div class="video-embed-wrap">
-          <iframe src="https://www.youtube.com/embed/ffcQ4n4s_QI" title="Semi marathon de Nuits-Saint-Georges" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/8tiQpdT22m0" title="Reulle-Vergy en fête" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-info">
-          <p class="video-title">Course de Nuits-St-Georges</p>
-          <p class="video-desc">L'Harmonie accompagne la célèbre course de Nuits-Saint-Georges, animant le parcours pour les coureurs et le public.</p>
+          <p class="video-title">I Will Survive | Reulle-Vergy en fête</p>
+          <p class="video-desc">L'harmonie de Nuits-St-Georges était présente à Reulle-Vergy pour participer à leur fête annuelle en musique !</p>
         </div>
       </div>
-      <div class="video-item">
+
+      
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/36CkzuWgeo4" title="Concert d'hiver 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -284,7 +292,7 @@
           <p class="video-desc">Extrait du concert d'hiver 2024 - Présentation originale et mise en scène décalée pour ce morceau culte.</p>
         </div>
       </div>
-      <div class="video-item">
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/Gnt5qEVp-AA" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -293,7 +301,27 @@
           <p class="video-desc">Extrait du concert d'hiver 2024 - Un solo de trompette envoûtant au cœur de ce classique intemporel.</p>
         </div>
       </div>
-      <div class="video-item">
+
+      <div class="video-item" data-cat="animation">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/Nnq6grELAdc" title="Reulle-Vergy en fête" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Freed From Desire | Reulle-Vergy en fête</p>
+          <p class="video-desc">L'harmonie de Nuits-St-Georges était présente à Reulle-Vergy pour participer à leur fête annuelle en musique !</p>
+        </div>
+      </div>
+            <div class="video-item" data-cat="animation">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/9Xq3cyU8Ezc" title="Reulle-Vergy en fête" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Capitaine Flam | Reulle-Vergy en fête</p>
+          <p class="video-desc">L'harmonie de Nuits-St-Georges était présente à Reulle-Vergy pour participer à leur fête annuelle en musique !</p>
+        </div>
+      </div>
+
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/pX4J1RFA4dQ" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -302,7 +330,7 @@
           <p class="video-desc">Extrait du concert de printemps 2024 - Présentation originale et mise en scène du morceau Mary Poppins.</p>
         </div>
       </div>
-      <div class="video-item">
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/ENkxYHwYmYY" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -311,7 +339,18 @@
           <p class="video-desc">L'harmonie de Nuits-Saint-Georges s'est déplacée en Bretagne afin d'aller jouer avec d'anciens musiciens de l'harmonie. Une présentation au Garde-à-vous et un concert réalisé à la perfection !</p>
         </div>
       </div>
-      <div class="video-item">
+
+      <div class="video-item" data-cat="animation">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/ffcQ4n4s_QI" title="Semi marathon de Nuits-Saint-Georges" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-title">Course de Nuits-St-Georges</p>
+          <p class="video-desc">L'Harmonie accompagne la célèbre course de Nuits-Saint-Georges, animant le parcours pour les coureurs et le public.</p>
+        </div>
+      </div>
+
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/uBqHFuVmiJ4" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -320,7 +359,7 @@
           <p class="video-desc">Extrait du concert de printemps 2024 - L'épique bande originale de Pirates des Caraïbes de Hans Zimmer.</p>
         </div>
       </div>
-      <div class="video-item">
+      <div class="video-item" data-cat="concert">
         <div class="video-embed-wrap">
           <iframe src="https://www.youtube.com/embed/Ey7lOy6JMbg" title="Concert de Printemps 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>

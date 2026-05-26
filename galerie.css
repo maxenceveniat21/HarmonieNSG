@@ -167,6 +167,8 @@ section[id] { scroll-margin-top: 130px; }
 
 
 /* ===== VIDÉOS ===== */
+.video-filters { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
 .video-grid-short {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

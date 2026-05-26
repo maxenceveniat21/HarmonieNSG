@@ -456,6 +456,26 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* =========================================
+     FILTRES VIDÉOS
+     ========================================= */
+  var videoFilterBtns = document.querySelectorAll('[data-video-filter]');
+  var videoItems = document.querySelectorAll('#videoGrid .video-item');
+
+  if (videoFilterBtns.length) {
+    videoFilterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        videoFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.getAttribute('data-video-filter');
+        videoItems.forEach(function (item) {
+          item.style.display = (filter === 'all' || item.getAttribute('data-cat') === filter) ? '' : 'none';
+        });
+      });
+    });
+  }
+
+
   var lightbox        = document.getElementById('lightbox');
   var isProgrammeMode = false;
 
