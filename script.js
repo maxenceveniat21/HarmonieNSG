@@ -14,24 +14,12 @@ gtag('config', 'G-XFFFR3DDJY');
 var EVENTS = {
   concerts: [
     {
-      date:     '2026-05-30',          // Format YYYY-MM-DD
-      jour:     '30',
-      mois:     'Mai 2026',
-      titre:    'Concert de Printemps',
-      lieu:     'Salle des fêtes de Nuits-St-Georges',
-      details:  '20h30 — Entrée libre',
-      lat:      47.13611304591573,
-      lng:      4.950225504769968,
-      mapLieu:  'Nuits-St-Georges — Salle des fêtes',
-      affiche:  'images/affiche30mai2026.jpg'
-    },
-    {
       date:     '2026-06-19',
       jour:     '19',
       mois:     'Juin 2026',
       titre:    "Concert d'été à Fussey",
       lieu:     'Salle des fêtes',
-      details:  '20h30 — Entrée libre',
+      details:  '19h30 — Entrée libre',
       lat:      47.11832336916324,
       lng:      4.8356295849529864,
       mapLieu:  'Fussey — Salle des fêtes',
