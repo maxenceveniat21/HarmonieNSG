@@ -14,28 +14,16 @@ gtag('config', 'G-XFFFR3DDJY');
 var EVENTS = {
   concerts: [
     {
-      date:     '2026-06-19',
-      jour:     '19',
-      mois:     'Juin 2026',
-      titre:    "Concert d'été à Fussey",
-      lieu:     'Salle des fêtes',
-      details:  '19h30 — Entrée libre',
-      lat:      47.11832336916324,
-      lng:      4.8356295849529864,
-      mapLieu:  'Fussey — Salle des fêtes',
-      affiche:  null
-    },
-    {
       date:     '2026-07-05',
       jour:     '5',
       mois:     'Juillet 2026',
       titre:    "Concert d'été à Villers-La-Faye",
       lieu:     'Salle des fêtes',
-      details:  "Fin d'après-midi — Entrée libre",
+      details:  "18h00 — Entrée libre",
       lat:      47.10593814859927,
       lng:      4.877856559737992,
       mapLieu:  'Villers-La-Faye — Salle des fêtes',
-      affiche:  null
+      affiche:  'images/concertVillers.jpg'
     },
     {
       date:     '2026-12-12',
