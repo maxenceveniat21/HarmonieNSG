@@ -547,3 +547,121 @@ footer { background: var(--navy); padding: 2.2rem 2.5rem; }
   .menu-toggle { padding: 16px 20px; }
   .menu-toggle span { width: 32px; height: 2px; }
 }
+
+/* =============================================
+   POPUP ANNONCE
+   ============================================= */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(2, 0, 47, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  /* iOS : empêche le scroll derrière */
+  -webkit-overflow-scrolling: touch;
+}
+.popup-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup-card {
+  background: var(--cream);
+  max-width: 620px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(2, 0, 47, 0.45);
+  border: 1px solid rgba(2, 0, 71, 0.1);
+  transform: translateY(20px);
+  transition: transform 0.35s ease;
+  overflow: hidden;
+  /* Empêche la card de dépasser sur petit écran */
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.popup-overlay.open .popup-card {
+  transform: translateY(0);
+}
+
+.popup-header {
+  background: var(--navy);
+  padding: 1.1rem 3.5rem 1.1rem 1.6rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.popup-title {
+  font-family: var(--font-caps);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.popup-close {
+  position: absolute;
+  top: 50%;
+  right: 0.9rem;
+  transform: translateY(-50%);
+  background: none;
+  border: 1px solid rgba(255, 235, 184, 0.3);
+  color: var(--gold);
+  border-radius: 50%;
+  /* Zone de tap généreuse sur mobile */
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s, border-color 0.2s;
+  /* Évite le double-tap zoom iOS */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.popup-close:hover { opacity: 1; border-color: var(--gold); }
+
+.popup-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* flex: 1 pour que l'image remplisse l'espace restant */
+  flex: 1;
+  min-height: 0;
+  object-fit: contain;
+  background: var(--white);
+  /* Limite la hauteur sur desktop */
+  max-height: 75vh;
+}
+
+/* Responsive popup */
+@media (max-width: 520px) {
+  .popup-overlay { padding: 1rem; }
+  .popup-card    { max-width: 100%; max-height: 88vh; }
+  .popup-img     { max-height: 90vw; }
+  .popup-title   { font-size: 0.78rem; letter-spacing: 0.16em; }
+}
+@media (max-width: 380px) {
+  .popup-overlay { padding: 0.6rem; }
+  .popup-img     { max-height: 85vw; }
+  .popup-close   { width: 36px; height: 36px; font-size: 1rem; }
+}
+/* iPhone SE et hauteurs réduites */
+@media (max-height: 600px) {
+  .popup-card  { max-height: 95vh; }
+  .popup-img   { max-height: 70vh; }
+  .popup-header { padding: 0.8rem 3rem 0.8rem 1.2rem; }
+}

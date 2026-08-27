@@ -315,8 +315,12 @@ window.addEventListener('DOMContentLoaded', function () {
     update();
   }
 
-  if (document.getElementById('concertsTrack')) initCarousel('concertsTrack', 'concertsPrev', 'concertsNext');
-  if (document.getElementById('animsTrack'))    initCarousel('animsTrack',    'animsPrev',    'animsNext');
+  if (document.getElementById('concertsTrack')) {
+    requestAnimationFrame(function() { initCarousel('concertsTrack', 'concertsPrev', 'concertsNext'); });
+  }
+  if (document.getElementById('animsTrack')) {
+    requestAnimationFrame(function() { initCarousel('animsTrack', 'animsPrev', 'animsNext'); });
+  }
 
 
   /* =========================================
@@ -343,7 +347,11 @@ window.addEventListener('DOMContentLoaded', function () {
       map.setView([lat, lng], 14);
       if (marker) map.removeLayer(marker);
       marker = L.marker([lat, lng]).addTo(map).bindPopup(lieu).openPopup();
-      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try {
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch(e) {
+        container.scrollIntoView();
+      }
       setTimeout(function () { map.invalidateSize(); }, 300);
     };
 
@@ -483,7 +491,10 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     var lbTouchStartX = 0;
-    lightbox.addEventListener('touchstart', function (e) { lbTouchStartX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchstart', function (e) {
+      lbTouchStartX = e.touches[0].clientX;
+      e.stopPropagation();
+    }, { passive: true });
     lightbox.addEventListener('touchend', function (e) {
       if (!lightbox.classList.contains('open') || isProgrammeMode || visibleImages.length <= 1) return;
       var dx = e.changedTouches[0].clientX - lbTouchStartX;
@@ -640,6 +651,94 @@ window.addEventListener('DOMContentLoaded', function () {
       var dy = Math.abs(e.changedTouches[0].clientY - evTouchStartY);
       if (dy > 60 && dy > dx) closeAffiche();
     }, { passive: true });
+  }
+
+
+  /* =========================================
+     POPUP ANNONCE
+     — Changer le titre : POPUP_TITRE
+     — Changer l'image  : POPUP_IMAGE
+     — Désactiver       : POPUP_ACTIVE = false
+     — Date de fin      : POPUP_DATE_FIN (incluse)
+     ========================================= */
+  var POPUP_ACTIVE   = true;
+  var POPUP_TITRE    = 'Rejoignez-nous dès le 11 septembre !';
+  var POPUP_IMAGE    = 'images/rentree.jpeg';
+  var POPUP_DATE_FIN = '2026-09-12';
+
+  if (POPUP_ACTIVE && todayStr() <= POPUP_DATE_FIN) {
+
+    var popupEl = document.createElement('div');
+    popupEl.id = 'popupOverlay';
+    popupEl.className = 'popup-overlay';
+    popupEl.innerHTML =
+      '<div class="popup-card" id="popupCard">'
+      + '<div class="popup-header">'
+      + '<p class="popup-title" id="popupTitre"></p>'
+      + '<button class="popup-close" id="popupClose" aria-label="Fermer">\u00d7</button>'
+      + '</div>'
+      + '<img class="popup-img" id="popupImg" src="" alt="Affiche">'
+      + '</div>';
+    document.body.appendChild(popupEl);
+
+    document.getElementById('popupTitre').textContent = POPUP_TITRE;
+    document.getElementById('popupImg').src = POPUP_IMAGE;
+
+    function openPopup() {
+      popupEl.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+      popupEl.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Bouton de réouverture dans le hero (index.html uniquement)
+    var heroBtn = document.getElementById('heroPopupBtn');
+    if (heroBtn) {
+      heroBtn.classList.add('visible');
+      heroBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openPopup();
+      });
+    }
+
+    // N'ouvre automatiquement que si pas déjà vue dans cette session
+    if (!sessionStorage.getItem('popupVue')) {
+      sessionStorage.setItem('popupVue', '1');
+      setTimeout(openPopup, 600);
+    }
+
+    // Croix — touch-action manipulation déjà en CSS, ici on stopPropagation
+    document.getElementById('popupClose').addEventListener('click', function(e) {
+      e.stopPropagation();
+      closePopup();
+    });
+
+    // Clic/tap sur le fond (hors de la carte) — compatible iOS
+    // On utilise closest() car sur iOS e.target peut être un enfant de l'overlay
+    popupEl.addEventListener('click', function(e) {
+      if (!e.target.closest('#popupCard')) closePopup();
+    });
+
+    // Touch swipe vers le bas pour fermer (mobile)
+    var popupTouchStartY = 0, popupTouchStartX = 0;
+    popupEl.addEventListener('touchstart', function(e) {
+      popupTouchStartY = e.touches[0].clientY;
+      popupTouchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    popupEl.addEventListener('touchend', function(e) {
+      var dy = e.changedTouches[0].clientY - popupTouchStartY;
+      var dx = Math.abs(e.changedTouches[0].clientX - popupTouchStartX);
+      // Swipe vers le bas (> 70px) et dominant sur l'axe vertical
+      if (dy > 70 && dy > dx && !e.target.closest('#popupCard .popup-img')) {
+        closePopup();
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && popupEl.classList.contains('open')) closePopup();
+    });
   }
 
 }); // fin DOMContentLoaded
